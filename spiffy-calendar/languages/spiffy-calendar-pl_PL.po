@@ -1,0 +1,860 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Spiffy Calendar v1.3.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-07-23 12:28:22+0000\n"
+"Last-Translator: kkacprzyk <knp@viden.pl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: POLAND\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: spiffy-calendar.php:239
+#@ spiffy-calendar
+msgid "Spiffy Calendar"
+msgstr "Kalendarz Spiffy"
+
+#: spiffy-calendar.php:243
+#: spiffy-calendar.php:244
+#: spiffy-calendar.php:1084
+#@ spiffy-calendar
+msgid "Manage Events"
+msgstr "Zarządzaj wydarzeniami"
+
+#: spiffy-calendar.php:248
+#: spiffy-calendar.php:1512
+#@ spiffy-calendar
+msgid "Manage Categories"
+msgstr "Zarządzaj kategoriami"
+
+#: spiffy-calendar.php:250
+#@ spiffy-calendar
+msgid "Calendar Config"
+msgstr "Konfiguracja kalendarza"
+
+#: spiffy-calendar.php:251
+#@ spiffy-calendar
+msgid "Calendar Options"
+msgstr "Opcje kalendarza"
+
+#: spiffy-calendar.php:379
+#: spiffy-calendar.php:1523
+#@ spiffy-calendar
+msgid "ID"
+msgstr ""
+
+#: spiffy-calendar.php:380
+#: spiffy-calendar.php:1790
+#: spiffy-calendar.php:1834
+#: spiffy-calendar.php:1877
+#@ spiffy-calendar
+msgid "Title"
+msgstr "Tytuł"
+
+#: spiffy-calendar.php:381
+#: spiffy-calendar.php:558
+#@ spiffy-calendar
+msgid "Start Date"
+msgstr "Data początku"
+
+#: spiffy-calendar.php:382
+#: spiffy-calendar.php:587
+#@ spiffy-calendar
+msgid "End Date"
+msgstr "Data końca"
+
+#: spiffy-calendar.php:383
+#@ spiffy-calendar
+msgid "Start Time"
+msgstr "Czas początku"
+
+#: spiffy-calendar.php:384
+#@ spiffy-calendar
+msgid "End Time"
+msgstr "Czas końca"
+
+#: spiffy-calendar.php:385
+#@ spiffy-calendar
+msgid "Recurs"
+msgstr "Cykliczne"
+
+#: spiffy-calendar.php:386
+#@ spiffy-calendar
+msgid "Repeats"
+msgstr "Powtórki"
+
+#: spiffy-calendar.php:387
+#: spiffy-calendar.php:696
+#@ spiffy-calendar
+msgid "Hide Events"
+msgstr "Ukryte wydarzenia"
+
+#: spiffy-calendar.php:388
+#: spiffy-calendar.php:707
+#@ spiffy-calendar
+msgid "Show Title"
+msgstr "Pokaż tytuł"
+
+#: spiffy-calendar.php:389
+#: spiffy-calendar.php:715
+#@ spiffy-calendar
+msgid "Image"
+msgstr "Obraz"
+
+#: spiffy-calendar.php:390
+#: spiffy-calendar.php:1293
+#@ spiffy-calendar
+msgid "Author"
+msgstr "Autor"
+
+#: spiffy-calendar.php:391
+#@ spiffy-calendar
+msgid "Category"
+msgstr "Kategoria"
+
+#: spiffy-calendar.php:392
+#: spiffy-calendar.php:459
+#: spiffy-calendar.php:1526
+#: spiffy-calendar.php:1539
+#@ spiffy-calendar
+msgid "Edit"
+msgstr "Edycja"
+
+#: spiffy-calendar.php:393
+#: spiffy-calendar.php:465
+#: spiffy-calendar.php:1527
+#: spiffy-calendar.php:1550
+#@ spiffy-calendar
+msgid "Delete"
+msgstr "Usuń"
+
+#: spiffy-calendar.php:406
+#: spiffy-calendar.php:407
+#: spiffy-calendar.php:421
+#: spiffy-calendar.php:436
+#: spiffy-calendar.php:1542
+#@ spiffy-calendar
+msgid "N/A"
+msgstr "Niedostępne"
+
+#: spiffy-calendar.php:411
+#@ spiffy-calendar
+msgid "Never"
+msgstr "Nigdy"
+
+#: spiffy-calendar.php:412
+#@ spiffy-calendar
+msgid "Weekly"
+msgstr "Tygodniowo"
+
+#: spiffy-calendar.php:413
+#@ spiffy-calendar
+msgid "Monthly (date)"
+msgstr "Miesięcznie (data)"
+
+#: spiffy-calendar.php:414
+#@ spiffy-calendar
+msgid "Monthly (day)"
+msgstr "Miesięcznie (dzień)"
+
+#: spiffy-calendar.php:415
+#@ spiffy-calendar
+msgid "Yearly"
+msgstr "Rocznie"
+
+#: spiffy-calendar.php:422
+#@ spiffy-calendar
+msgid "Forever"
+msgstr "Wiecznie"
+
+#: spiffy-calendar.php:423
+#@ spiffy-calendar
+msgid "Times"
+msgstr "razy"
+
+#: spiffy-calendar.php:429
+#: spiffy-calendar.php:438
+#: spiffy-calendar.php:699
+#: spiffy-calendar.php:709
+#@ spiffy-calendar
+msgid "False"
+msgstr "Fałsz"
+
+#: spiffy-calendar.php:430
+#: spiffy-calendar.php:439
+#: spiffy-calendar.php:700
+#: spiffy-calendar.php:710
+#@ spiffy-calendar
+msgid "True"
+msgstr "Prawda"
+
+#: spiffy-calendar.php:465
+#@ spiffy-calendar
+msgid "Are you sure you want to delete the event titled &quot;"
+msgstr "Jesteś pewien że chcesz usunąć wydarzenie nazwane &quot;"
+
+#: spiffy-calendar.php:476
+#@ spiffy-calendar
+msgid "<p>There are no events in the database!</p>"
+msgstr "<p>Brak wydarzeń w bazie danych!</p>"
+
+#: spiffy-calendar.php:489
+#@ spiffy-calendar
+msgid "Bad event ID"
+msgstr "Błędny ID wydarzenia"
+
+#: spiffy-calendar.php:495
+#@ spiffy-calendar
+msgid "An event with that ID couldn't be found"
+msgstr ""
+
+#: spiffy-calendar.php:521
+#@ spiffy-calendar
+msgid "Event Title"
+msgstr "Tytuł wydarzenia"
+
+#: spiffy-calendar.php:526
+#@ spiffy-calendar
+msgid "Event Description"
+msgstr "Opis wydarzenia"
+
+#: spiffy-calendar.php:532
+#@ spiffy-calendar
+msgid "Event Category"
+msgstr "Kategoria wydarzenia"
+
+#: spiffy-calendar.php:554
+#@ spiffy-calendar
+msgid "Event Link (Optional)"
+msgstr "Odnośnik do wydarzenia (opcjonalnie)"
+
+#: spiffy-calendar.php:571
+#@ spiffy-calendar
+msgid "Start Time (hh:mm)"
+msgstr "Czas początku (hh:mm)"
+
+#: spiffy-calendar.php:583
+#: spiffy-calendar.php:609
+#@ spiffy-calendar
+msgid "Optional, set blank if not required. Ignored for \"Hide Events\"."
+msgstr "Opcjonalnie, ustaw puste jeśli nie wymagane. Ignorowane dla \"Ukrytych wydarzeń\"."
+
+#: spiffy-calendar.php:599
+#@ spiffy-calendar
+msgid "End Time (hh:mm)"
+msgstr "Czas końca (hh:mm)"
+
+#: spiffy-calendar.php:613
+#@ spiffy-calendar
+msgid "Recurring Events"
+msgstr "Wydarzenia powtarzalne"
+
+#: spiffy-calendar.php:682
+#@ spiffy-calendar
+msgid "Repeats for"
+msgstr "Powtarzalne"
+
+#: spiffy-calendar.php:686
+#@ spiffy-calendar
+msgid "None"
+msgstr "Brak"
+
+#: spiffy-calendar.php:687
+#@ spiffy-calendar
+msgid "Weeks"
+msgstr "Tygodni"
+
+#: spiffy-calendar.php:688
+#@ spiffy-calendar
+msgid "Months (date)"
+msgstr "Miesięcy (data)"
+
+#: spiffy-calendar.php:689
+#@ spiffy-calendar
+msgid "Months (day)"
+msgstr "Miesięcy (dni)"
+
+#: spiffy-calendar.php:690
+#@ spiffy-calendar
+msgid "Years"
+msgstr "Lat"
+
+#: spiffy-calendar.php:692
+#@ spiffy-calendar
+msgid "Entering 0 means forever. Where the recurrance interval is left at none, the event will not recur."
+msgstr "Wpisz 0 jeśli trwa wiecznie. Jeśli odstęp powtarzania jest pusty, wydarzenie nie będzie powtarzane."
+
+#: spiffy-calendar.php:702
+#@ spiffy-calendar
+msgid "Entering True means other events of this category will be hidden for the specifed day(s)."
+msgstr "Wprowadzenie Prawda oznacza że inne wydarzenia w tej kategorii będą ukryte w ten specyficzny dzień (dni)."
+
+#: spiffy-calendar.php:712
+#@ spiffy-calendar
+msgid "Entering True means the title of this event will be displayed. This is only used if Hide Events is True."
+msgstr "Wprowadzenie Prawda oznacza że tytuł wydarzenia będzie wyświetlany. Używane wyłącznie jeśli Ukryte wydarzenie jest prawdziwe."
+
+#: spiffy-calendar.php:735
+#: spiffy-calendar.php:1367
+#: spiffy-calendar.php:1459
+#: spiffy-calendar.php:1510
+#@ spiffy-calendar
+msgid "Save"
+msgstr "Zapisz"
+
+#: spiffy-calendar.php:800
+#@ spiffy-calendar
+msgid "Failure"
+msgstr ""
+
+#: spiffy-calendar.php:800
+#@ spiffy-calendar
+msgid "You can't update an event if you haven't submitted an event id"
+msgstr ""
+
+#: spiffy-calendar.php:835
+#: spiffy-calendar.php:842
+#: spiffy-calendar.php:849
+#: spiffy-calendar.php:863
+#: spiffy-calendar.php:877
+#: spiffy-calendar.php:888
+#: spiffy-calendar.php:898
+#: spiffy-calendar.php:909
+#: spiffy-calendar.php:983
+#: spiffy-calendar.php:989
+#: spiffy-calendar.php:1033
+#: spiffy-calendar.php:1058
+#@ spiffy-calendar
+msgid "Error"
+msgstr "Błąd"
+
+#: spiffy-calendar.php:835
+#@ spiffy-calendar
+msgid "Your event end date must be either after or the same as your event begin date"
+msgstr ""
+
+#: spiffy-calendar.php:842
+#@ spiffy-calendar
+msgid "Your date formatting is correct but one or more of your dates is invalid. Check for number of days in month and leap year related errors."
+msgstr ""
+
+#: spiffy-calendar.php:849
+#@ spiffy-calendar
+msgid "Both start and end dates must be entered and be in the format YYYY-MM-DD"
+msgstr "Data startu i data końca muszą być w formacie YYYY-MM-DD"
+
+#: spiffy-calendar.php:863
+#@ spiffy-calendar
+msgid "The time field must either be blank or be entered in the format hh:mm am/pm"
+msgstr "Pole czasu musi być puste lub wprowadzony cas w formacie hh:mm am/pm"
+
+#: spiffy-calendar.php:877
+#@ spiffy-calendar
+msgid "The end time field must either be blank or be entered in the format hh:mm am/pm"
+msgstr "Pole czasu zakończenia musi być puste lub wprowadzony cas w formacie hh:mm am/pm"
+
+#: spiffy-calendar.php:888
+#@ spiffy-calendar
+msgid "The URL entered must either be prefixed with http:// or be completely blank"
+msgstr "Adres URL musi mieć prefiks http:// lub pole pozostawić puste"
+
+#: spiffy-calendar.php:898
+#@ spiffy-calendar
+msgid "The event title must be between 1 and 30 characters in length"
+msgstr "Tytuł wydarzenia musi mieć długość między 1 a 30 znaków"
+
+#: spiffy-calendar.php:909
+#@ spiffy-calendar
+msgid "The repetition value must be 0 unless a type of recurrance is selected in which case the repetition value must be 0 or higher"
+msgstr ""
+
+#: spiffy-calendar.php:983
+#@ spiffy-calendar
+msgid "The event could not be added to the database. This may indicate a problem with your database or the way in which it is configured."
+msgstr ""
+
+#: spiffy-calendar.php:989
+#@ spiffy-calendar
+msgid "The event could not be updated. This may indicate a problem with your database or the way in which it is configured."
+msgstr ""
+
+#: spiffy-calendar.php:996
+#@ spiffy-calendar
+msgid "Event added. It will now show in your calendar."
+msgstr "Wydarzenie dodane. Będzie pokazywane w twoim kalendarzu."
+
+#: spiffy-calendar.php:1002
+#@ spiffy-calendar
+msgid "Event updated successfully."
+msgstr "Wydarzenie zaktualizowane poprawnie."
+
+#: spiffy-calendar.php:1033
+#@ spiffy-calendar
+msgid "You can't delete an event if you haven't submitted an event id"
+msgstr ""
+
+#: spiffy-calendar.php:1054
+#@ spiffy-calendar
+msgid "Event deleted successfully"
+msgstr "Wydarzenie usunięto pomyślnie"
+
+#: spiffy-calendar.php:1058
+#@ spiffy-calendar
+msgid "Despite issuing a request to delete, the event still remains in the database. Please investigate."
+msgstr ""
+
+#: spiffy-calendar.php:1072
+#@ spiffy-calendar
+msgid "Edit Event"
+msgstr "Edytuj wydarzenie"
+
+#: spiffy-calendar.php:1075
+#@ spiffy-calendar
+msgid "You must provide an event id in order to edit it"
+msgstr ""
+
+#: spiffy-calendar.php:1081
+#@ spiffy-calendar
+msgid "Add Event"
+msgstr "Dodaj wydarzenie"
+
+#: spiffy-calendar.php:1171
+#@ spiffy-calendar
+msgid "Settings saved"
+msgstr "Ustawienia zapisane"
+
+#: spiffy-calendar.php:1281
+#@ spiffy-calendar
+msgid "Spiffy Calendar Options"
+msgstr "Kalendarz Spiffy Opcje"
+
+#: spiffy-calendar.php:1289
+#@ spiffy-calendar
+msgid "Choose the lowest user group that may manage events"
+msgstr "Wybierz grupę z najniższymi uprawnieniami która może zarządzać wydarzeniami"
+
+#: spiffy-calendar.php:1291
+#@ spiffy-calendar
+msgid "Subscriber"
+msgstr ""
+
+#: spiffy-calendar.php:1292
+#@ spiffy-calendar
+msgid "Contributor"
+msgstr ""
+
+#: spiffy-calendar.php:1294
+#@ spiffy-calendar
+msgid "Editor"
+msgstr ""
+
+#: spiffy-calendar.php:1295
+#@ spiffy-calendar
+msgid "Administrator"
+msgstr ""
+
+#: spiffy-calendar.php:1300
+#@ spiffy-calendar
+msgid "Do you want to display the author name on events?"
+msgstr "Chcesz wyświetlać nazwę autora w wydarzeniach?"
+
+#: spiffy-calendar.php:1302
+#: spiffy-calendar.php:1310
+#: spiffy-calendar.php:1320
+#: spiffy-calendar.php:1328
+#: spiffy-calendar.php:1336
+#: spiffy-calendar.php:1345
+#: spiffy-calendar.php:1353
+#@ spiffy-calendar
+msgid "Yes"
+msgstr "Tak"
+
+#: spiffy-calendar.php:1303
+#: spiffy-calendar.php:1311
+#: spiffy-calendar.php:1321
+#: spiffy-calendar.php:1329
+#: spiffy-calendar.php:1337
+#: spiffy-calendar.php:1346
+#: spiffy-calendar.php:1354
+#@ spiffy-calendar
+msgid "No"
+msgstr "Nie"
+
+#: spiffy-calendar.php:1308
+#@ spiffy-calendar
+msgid "Do you want to enable detailed event display?"
+msgstr "Chcesz włączyć wyświetlanie szczegółów wydarzenia?"
+
+#: spiffy-calendar.php:1314
+#@ default
+msgid "When this option is enabled the time and image will be listed with the event title. Note that time and image are always displayed in the popup window."
+msgstr ""
+
+#: spiffy-calendar.php:1318
+#@ spiffy-calendar
+msgid "Display a jumpbox for changing month and year quickly?"
+msgstr "Wyświetlać menu szybkiego wyboru miesięcy i lat w pełnym kalendarzu?"
+
+#: spiffy-calendar.php:1326
+#@ spiffy-calendar
+msgid "Display todays events?"
+msgstr "Wyświetlać dzisiejsze wydarzenia?"
+
+#: spiffy-calendar.php:1334
+#@ spiffy-calendar
+msgid "Display upcoming events?"
+msgstr "Wyświetlać nadchodzące wydarzenia?"
+
+#: spiffy-calendar.php:1339
+#@ spiffy-calendar
+msgid "for"
+msgstr "do"
+
+#: spiffy-calendar.php:1339
+#@ spiffy-calendar
+msgid "days into the future"
+msgstr "dni w przyszłości"
+
+#: spiffy-calendar.php:1343
+#@ spiffy-calendar
+msgid "Enable event categories?"
+msgstr "Włączyć kategorie wydarzeń?"
+
+#: spiffy-calendar.php:1351
+#@ spiffy-calendar
+msgid "Open event links in new window?"
+msgstr "Otworzyć odnośniki wydarzeń w nowym oknie?"
+
+#: spiffy-calendar.php:1359
+#@ spiffy-calendar
+msgid "Configure the stylesheet for Calendar"
+msgstr "Konfiguruj arkusz stylów dla Kalendarza"
+
+#: spiffy-calendar.php:1361
+#@ spiffy-calendar
+msgid "Tick this box if you wish to reset the Calendar style to default"
+msgstr "Zaznacz jeśli chcesz zresetować style Kalendarza do wartości domyślnych"
+
+#: spiffy-calendar.php:1420
+#@ spiffy-calendar
+msgid "Category added successfully"
+msgstr "Kategoria dodana pomyślnie"
+
+#: spiffy-calendar.php:1431
+#@ spiffy-calendar
+msgid "Category deleted successfully"
+msgstr "Kategoria usunięta pomyślnie"
+
+#: spiffy-calendar.php:1439
+#@ spiffy-calendar
+msgid "Edit Category"
+msgstr "Edycja kategorii"
+
+#: spiffy-calendar.php:1448
+#: spiffy-calendar.php:1499
+#: spiffy-calendar.php:1524
+#@ spiffy-calendar
+msgid "Category Name"
+msgstr "Nazwa kategorii"
+
+#: spiffy-calendar.php:1452
+#: spiffy-calendar.php:1503
+#@ spiffy-calendar
+msgid "Category Colour (Hex format)"
+msgstr "Kolor kategorii (format HEX)"
+
+#: spiffy-calendar.php:1471
+#@ spiffy-calendar
+msgid "Category edited successfully"
+msgstr "Kategoria zedytowana pomyślnie"
+
+#: spiffy-calendar.php:1490
+#@ spiffy-calendar
+msgid "Add Category"
+msgstr "Dodanie kategorii"
+
+#: spiffy-calendar.php:1525
+#@ spiffy-calendar
+msgid "Category Colour"
+msgstr "Kolor kategorii"
+
+#: spiffy-calendar.php:1550
+#@ spiffy-calendar
+msgid "Are you sure you want to delete the category named &quot;"
+msgstr "Jesteś pewien że chcesz usunąć kategorię nazwaną &quot;"
+
+#: spiffy-calendar.php:1563
+#@ spiffy-calendar
+msgid "There are no categories in the database - something has gone wrong!"
+msgstr "Brak kategorii w bazie danych - coś poszło źle!"
+
+#: spiffy-calendar.php:1635
+#: spiffy-calendar.php:1640
+#@ spiffy-calendar
+msgid "Next"
+msgstr "Następny"
+
+#: spiffy-calendar.php:1652
+#: spiffy-calendar.php:1657
+#@ spiffy-calendar
+msgid "Prev"
+msgstr "Wcześniejszy"
+
+#: spiffy-calendar.php:1760
+#@ spiffy-calendar
+msgid "Mini Calendar"
+msgstr ""
+
+#: spiffy-calendar.php:1771
+#@ spiffy-calendar
+msgid "Calendar"
+msgstr "Kalendarz"
+
+#: spiffy-calendar.php:1792
+#: spiffy-calendar.php:1836
+#: spiffy-calendar.php:1879
+#@ spiffy-calendar
+msgid "Comma separated category id list"
+msgstr "Lista ID kategorii oddzielona przecinkami"
+
+#: spiffy-calendar.php:1805
+#: spiffy-calendar.php:1815
+#@ spiffy-calendar
+msgid "Today's Events"
+msgstr "Dzisiejsze wydarzenia"
+
+#: spiffy-calendar.php:1848
+#: spiffy-calendar.php:1858
+#@ spiffy-calendar
+msgid "Upcoming Events"
+msgstr "Nadchodzące wydarzenia"
+
+#: spiffy-calendar.php:1928
+#@ spiffy-calendar
+msgid "Time"
+msgstr "Godzina"
+
+#: spiffy-calendar.php:1940
+#@ spiffy-calendar
+msgid "Posted by"
+msgstr "Wpis przez"
+
+#: spiffy-calendar.php:2216
+#: spiffy-calendar.php:2223
+#@ spiffy-calendar
+msgid "Sunday"
+msgstr "Niedziela"
+
+#: spiffy-calendar.php:2217
+#: spiffy-calendar.php:2221
+#@ spiffy-calendar
+msgid "Monday"
+msgstr "Poniedziałek"
+
+#: spiffy-calendar.php:2217
+#: spiffy-calendar.php:2222
+#@ spiffy-calendar
+msgid "Tuesday"
+msgstr "Wtorek"
+
+#: spiffy-calendar.php:2217
+#: spiffy-calendar.php:2222
+#@ spiffy-calendar
+msgid "Wednesday"
+msgstr "Środa"
+
+#: spiffy-calendar.php:2218
+#: spiffy-calendar.php:2222
+#@ spiffy-calendar
+msgid "Thursday"
+msgstr "Czwartek"
+
+#: spiffy-calendar.php:2218
+#: spiffy-calendar.php:2223
+#@ spiffy-calendar
+msgid "Friday"
+msgstr "Piątek"
+
+#: spiffy-calendar.php:2218
+#: spiffy-calendar.php:2223
+#@ spiffy-calendar
+msgid "Saturday"
+msgstr "Sobota"
+
+#: spiffy-calendar.php:2227
+#: spiffy-calendar.php:2317
+#: spiffy-calendar.php:2482
+#@ spiffy-calendar
+msgid "January"
+msgstr "Styczeń"
+
+#: spiffy-calendar.php:2227
+#: spiffy-calendar.php:2318
+#: spiffy-calendar.php:2482
+#@ spiffy-calendar
+msgid "February"
+msgstr "Luty"
+
+#: spiffy-calendar.php:2227
+#: spiffy-calendar.php:2319
+#: spiffy-calendar.php:2482
+#@ spiffy-calendar
+msgid "March"
+msgstr "Marzec"
+
+#: spiffy-calendar.php:2228
+#: spiffy-calendar.php:2320
+#: spiffy-calendar.php:2483
+#@ spiffy-calendar
+msgid "April"
+msgstr "Kwiecień"
+
+#: spiffy-calendar.php:2228
+#: spiffy-calendar.php:2321
+#: spiffy-calendar.php:2483
+#@ spiffy-calendar
+msgid "May"
+msgstr "May"
+
+#: spiffy-calendar.php:2228
+#: spiffy-calendar.php:2322
+#: spiffy-calendar.php:2483
+#@ spiffy-calendar
+msgid "June"
+msgstr "Czerwiec"
+
+#: spiffy-calendar.php:2228
+#: spiffy-calendar.php:2323
+#: spiffy-calendar.php:2484
+#@ spiffy-calendar
+msgid "July"
+msgstr "Lipiec"
+
+#: spiffy-calendar.php:2229
+#: spiffy-calendar.php:2324
+#: spiffy-calendar.php:2484
+#@ spiffy-calendar
+msgid "August"
+msgstr "Sierpień"
+
+#: spiffy-calendar.php:2229
+#: spiffy-calendar.php:2325
+#: spiffy-calendar.php:2484
+#@ spiffy-calendar
+msgid "September"
+msgstr "Wrzesień"
+
+#: spiffy-calendar.php:2229
+#: spiffy-calendar.php:2326
+#: spiffy-calendar.php:2485
+#@ spiffy-calendar
+msgid "October"
+msgstr "Październik"
+
+#: spiffy-calendar.php:2230
+#: spiffy-calendar.php:2327
+#: spiffy-calendar.php:2485
+#@ spiffy-calendar
+msgid "November"
+msgstr "Listopad"
+
+#: spiffy-calendar.php:2230
+#: spiffy-calendar.php:2328
+#: spiffy-calendar.php:2485
+#@ spiffy-calendar
+msgid "December"
+msgstr "Grudzień"
+
+#: spiffy-calendar.php:2316
+#@ spiffy-calendar
+msgid "Month"
+msgstr "Miesiąc"
+
+#: spiffy-calendar.php:2330
+#@ spiffy-calendar
+msgid "Year"
+msgstr "Rok"
+
+#: spiffy-calendar.php:2357
+#@ spiffy-calendar
+msgid "Go"
+msgstr "Idź"
+
+#: spiffy-calendar.php:2425
+#@ spiffy-calendar
+msgid "Category Key"
+msgstr "Klucz kategorii"
+
+#: spiffy-calendar.php:2451
+#@ spiffy-calendar
+msgid "all day"
+msgstr "cały dzień"
+
+#: spiffy-calendar.php:2453
+#@ spiffy-calendar
+msgid "at "
+msgstr "o "
+
+#: spiffy-calendar.php:2455
+#@ spiffy-calendar
+msgid "from "
+msgstr "od "
+
+#: spiffy-calendar.php:2456
+#@ spiffy-calendar
+msgid " to "
+msgstr " do "
+
+#: spiffy-calendar.php:2474
+#: spiffy-calendar.php:2478
+#@ spiffy-calendar
+msgid "Su"
+msgstr "Ni"
+
+#: spiffy-calendar.php:2474
+#: spiffy-calendar.php:2477
+#@ spiffy-calendar
+msgid "Mo"
+msgstr "Po"
+
+#: spiffy-calendar.php:2474
+#: spiffy-calendar.php:2477
+#@ spiffy-calendar
+msgid "Tu"
+msgstr "Wt"
+
+#: spiffy-calendar.php:2475
+#: spiffy-calendar.php:2477
+#@ spiffy-calendar
+msgid "We"
+msgstr "Śr"
+
+#: spiffy-calendar.php:2475
+#: spiffy-calendar.php:2478
+#@ spiffy-calendar
+msgid "Th"
+msgstr "Cz"
+
+#: spiffy-calendar.php:2475
+#: spiffy-calendar.php:2478
+#@ spiffy-calendar
+msgid "Fr"
+msgstr "Pi"
+
+#: spiffy-calendar.php:2475
+#: spiffy-calendar.php:2478
+#@ spiffy-calendar
+msgid "Sa"
+msgstr "So"
+

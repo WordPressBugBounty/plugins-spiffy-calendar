@@ -1,0 +1,816 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Spiffy Calendar 2.1.0.alpha.0929\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/spiffy-calendar\n"
+"POT-Creation-Date: 2015-10-05 18:22:56+00:00\n"
+"PO-Revision-Date: Mon Oct 12 2015 18:51:54 GMT+0200 (CEST)\n"
+"Last-Translator: ctuxboy <c.hollebeke@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: Dutch\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Loco - https://localise.biz/\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-KeywordsList: _:1;gettext:1;dgettext:2;ngettext:1,2;dngettext:2,3;"
+"__:1;_e:1;_c:1;_n:1,2;_n_noop:1,2;_nc:1,2;__ngettext:1,2;__ngettext_noop:1,2;"
+"_x:1,2c;_ex:1,2c;_nx:1,2,4c;_nx_noop:1,2,3c;_n_js:1,2;_nx_js:1,2,3c;"
+"esc_attr__:1;esc_html__:1;esc_attr_e:1;esc_html_e:1;esc_attr_x:1,2c;"
+"esc_html_x:1,2c;comments_number_link:2,3;t:1;st:1;trans:1;transChoice:1,2\n"
+"X-Loco-Target-Locale: nl_NL"
+
+#: includes/shortcode-buttons.php:56
+msgid "Spiffy Calendar Shortcode Embed"
+msgstr ""
+
+#: includes/shortcode-buttons.php:66
+msgid "Full Calendar"
+msgstr ""
+
+#: includes/shortcode-buttons.php:93
+msgid "Insert"
+msgstr ""
+
+#: spiffy-calendar.php:335
+msgid "Spiffy Event"
+msgstr ""
+
+#: spiffy-calendar.php:649
+msgid ""
+"The repetition value must be 0 unless a type of recurrance is selected. "
+"Custom days recurrence must have a repetition value from 1 to 365, others "
+"may be 0 for infinite."
+msgstr ""
+
+#: spiffy-calendar.php:661
+msgid ""
+"The number of custom days in the interval must be greater than 1 and less "
+"than 200 for a custom day recur event, or 1 for other recur types."
+msgstr ""
+"Het interval van de aangepaste dagen moet groter zijn dan 1 en kleiner dan "
+"200 voor een herhalend evenement met aangepaste dagen, of 1 voor andere "
+"herhalingen."
+
+#: spiffy-calendar.php:2115
+msgid "at "
+msgstr ""
+
+#: views/admin-settings-tab-categories.php:11
+#: views/admin-settings-tab-events.php:11
+#: views/admin-settings-tab-options.php:11
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Je hebt niet genoeg rechten om toegang te krijgen tot deze pagina."
+
+#: views/admin-settings-tab-event-edit.php:177
+msgid "Interval"
+msgstr ""
+
+#: views/admin-settings-tab-event-edit.php:234
+#: views/admin-settings-tab-event-edit.php:244
+#: views/admin-settings-tab-event-list.php:69
+#: views/admin-settings-tab-event-list.php:78
+msgid "False"
+msgstr ""
+
+#: views/admin-settings-tab-event-edit.php:235
+#: views/admin-settings-tab-event-edit.php:245
+#: views/admin-settings-tab-event-list.php:70
+#: views/admin-settings-tab-event-list.php:79
+msgid "True"
+msgstr ""
+
+#: views/admin-settings-tab-options.php:119
+msgid "Enable detailed event display?"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.spiffycalendar.com"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://spiffycalendar.com"
+msgstr ""
+
+#: views/admin-settings-tab-categories.php:36
+#: views/admin-settings-tab-options.php:196
+#, fuzzy
+msgid "Save Changes"
+msgstr "Wijzigingen opgeslagen"
+
+#: spiffy-calendar.php:635
+msgid "The event title must not be blank"
+msgstr "Gelieve een title in te vullen"
+
+#: views/admin-settings-tab-event-edit.php:117
+#: views/admin-settings-tab-event-edit.php:131
+msgid "Optional, set blank if not required. Ignored for \"Hide Events\"."
+msgstr ""
+"Optioneel, laat leeg indien geen tijdsaanduiding nodig is. Wordt genegeerd "
+"voor \"Verborgen Evenementen\"."
+
+#: views/admin-settings-tab-event-edit.php:175
+msgid "times"
+msgstr "keer"
+
+#: views/admin-settings-tab-event-edit.php:175
+msgid ""
+"Entering 0 means forever. Where the recurrence interval is left at none, the "
+"event will not recur."
+msgstr ""
+"\"0\" betekent altijd. Wanneer \"geen\" herhalingsinterval is ingesteld, wordt "
+"het evenement niet herhaald."
+
+#: views/admin-settings-tab-event-edit.php:184
+msgid "Custom Days"
+msgstr "Aangepaste dagen"
+
+#: views/admin-settings-tab-event-edit.php:186
+msgid "Number of custom days"
+msgstr "Aantal aangepaste dagen "
+
+#: views/admin-settings-tab-event-edit.php:237
+msgid ""
+"Entering True means other events of this category will be hidden for the "
+"specifed day(s)."
+msgstr ""
+"\"True\" betekent dat andere evenementen van deze categorie worden verborgen "
+"voor specifieke dag(en)."
+
+#: includes/shortcode-buttons.php:63
+msgid "Select shortcode:"
+msgstr "Selecteer shortcode:"
+
+#: includes/shortcode-buttons.php:67 spiffy-calendar.php:1113
+msgid "Mini Calendar"
+msgstr "Mini Calendar"
+
+#: includes/shortcode-buttons.php:68 spiffy-calendar.php:1158
+#: spiffy-calendar.php:1168
+msgid "Today's Events"
+msgstr "Evenementen van Vandaag"
+
+#: includes/shortcode-buttons.php:69 spiffy-calendar.php:1201
+#: spiffy-calendar.php:1211
+msgid "Upcoming Events"
+msgstr "Aankomende Evenementen"
+
+#: includes/shortcode-buttons.php:77
+msgid "Select categories (optional):"
+msgstr "Selecteer categorieën (optioneel):"
+
+#: includes/shortcode-buttons.php:78
+msgid "CTRL+click to select multiple categories."
+msgstr "CTRL+click om meerdere categorieën te selecteren."
+
+#: spiffy-calendar.php:282 spiffy-calendar.php:343
+msgid "Spiffy Calendar"
+msgstr "Spiffy Calendar"
+
+#: spiffy-calendar.php:286 spiffy-calendar.php:348
+msgid "Edit Events"
+msgstr "Wijzig Evenementen"
+
+#: spiffy-calendar.php:288 spiffy-calendar.php:290 spiffy-calendar.php:292
+#: spiffy-calendar.php:354 views/admin-settings-tab-event-edit.php:34
+msgid "Add Event"
+msgstr "Evenement Toevoegen"
+
+#: spiffy-calendar.php:290 spiffy-calendar.php:360 spiffy-calendar.php:381
+msgid "Categories"
+msgstr "Categorieën"
+
+#: spiffy-calendar.php:292 spiffy-calendar.php:366 spiffy-calendar.php:382
+#: views/admin-settings-tab-options.php:88
+msgid "Options"
+msgstr "Opties"
+
+#: spiffy-calendar.php:311
+msgid "Sorry, but you have no permission to change settings."
+msgstr "Sorry, maar je hebt geen bevoegdheden om de instellingen te wijzigen. "
+
+#: spiffy-calendar.php:380 spiffy-calendar.php:390
+msgid "Events"
+msgstr "Evenementen"
+
+#: spiffy-calendar.php:441
+msgid "Category deleted successfully"
+msgstr "Categorie succesvol verwijderd"
+
+#: spiffy-calendar.php:455
+msgid "Category added successfully"
+msgstr "Categorie succesvol toegevoegd"
+
+#: spiffy-calendar.php:460
+msgid "Missing category name or color, not saved."
+msgstr "Categorienaam ontbreekt, niet opgeslagen."
+
+#: spiffy-calendar.php:470
+msgid "Category edited successfully"
+msgstr "Categorie succesvol bewerkt"
+
+#: spiffy-calendar.php:472
+msgid "Missing category name or color, not updated."
+msgstr "Categorienaam ontbreekt, niet aangepast."
+
+#: spiffy-calendar.php:505
+msgid "Event deleted successfully"
+msgstr "Evenement succesvol verwijderd."
+
+#: spiffy-calendar.php:509 spiffy-calendar.php:572 spiffy-calendar.php:579
+#: spiffy-calendar.php:586 spiffy-calendar.php:600 spiffy-calendar.php:614
+#: spiffy-calendar.php:625 spiffy-calendar.php:635 spiffy-calendar.php:649
+#: spiffy-calendar.php:661 spiffy-calendar.php:699 spiffy-calendar.php:705
+msgid "Error"
+msgstr "Error"
+
+#: spiffy-calendar.php:509
+msgid ""
+"Despite issuing a request to delete, the event still remains in the database."
+" Please investigate."
+msgstr ""
+"Desondanks dat je een verwijderaanvraag hebt ingediend is het evenement "
+"nogsteeds aanwezig in de database. Dit graag onderzoeken."
+
+#: spiffy-calendar.php:540
+msgid "Failure"
+msgstr "Mislukt"
+
+#: spiffy-calendar.php:540
+msgid "You can't update an event if you haven't submitted an event id"
+msgstr "Je kan geen evenement updaten als je geen evenement ID ingevoerd hebt."
+
+#: spiffy-calendar.php:572
+msgid "Your event end date must be either after or the same as your event begin date"
+msgstr ""
+"Je evenement eind datum moet of Na of Hetzelfde als je evenement begin datum "
+"zijn."
+
+#: spiffy-calendar.php:579
+msgid ""
+"Your date formatting is correct but one or more of your dates is invalid. "
+"Check for number of days in month and leap year related errors."
+msgstr ""
+"Je datum opmaak is correct, maar één of meer datums zijn ongeldig. "
+"Controleer het aantal dagen in de maand en schrikkeljaar gerelateerde fouten."
+
+#: spiffy-calendar.php:586
+msgid "Both start and end dates must be entered and be in the format YYYY-MM-DD"
+msgstr ""
+"Zowel de start- als einddatum moeten ingevoerd worden en in formaat JJJJ-MM-"
+"DD zijn."
+
+#: spiffy-calendar.php:600
+msgid "The time field must either be blank or be entered in the format hh:mm am/pm"
+msgstr "Het tijd veld moet óf leeg zijn óf ingevoerd zijn in het formaat UU:MM am/pm"
+
+#: spiffy-calendar.php:614
+msgid ""
+"The end time field must either be blank or be entered in the format hh:mm "
+"am/pm"
+msgstr ""
+"Het eind tijd veld moet óf leeg zijn óf ingevoerd zijn in het formaat UU:MM "
+"am/pm"
+
+#: spiffy-calendar.php:625
+msgid "The URL entered must either be prefixed with http:// or be completely blank"
+msgstr "De ingevoerde URL moet óf voorafgaan met http:// óf helemaal leeg zijn"
+
+#: spiffy-calendar.php:699
+msgid ""
+"The event could not be added to the database. This may indicate a problem "
+"with your database or the way in which it is configured."
+msgstr ""
+"Het evenement kon niet worden toegevoegd aan de database. Dit kan een "
+"probleem aanduiden in je database of de manier waarop deze is geconfigureerd."
+
+#: spiffy-calendar.php:705
+msgid ""
+"The event could not be updated. This may indicate a problem with your "
+"database or the way in which it is configured."
+msgstr ""
+"Het evenement kon niet worden geupdate. Dit kan een probleem met je database "
+"aanduiden of de manier waarop deze is geconfigureerd."
+
+#: spiffy-calendar.php:712
+msgid "Event added. It will now show in your calendar."
+msgstr "Evenement toegevoegd. Het zal nu verschijnen in je kalendar."
+
+#: spiffy-calendar.php:718
+msgid "Event updated successfully."
+msgstr "Evenement succesvol geupdate."
+
+#: spiffy-calendar.php:818
+msgid "Settings saved"
+msgstr "Instellingen opgeslagen"
+
+#: spiffy-calendar.php:976 spiffy-calendar.php:981
+msgid "Next"
+msgstr "Volgende"
+
+#: spiffy-calendar.php:993 spiffy-calendar.php:998
+msgid "Prev"
+msgstr "Vorige"
+
+#: spiffy-calendar.php:1124
+msgid "Calendar"
+msgstr "Kalender"
+
+#: spiffy-calendar.php:1143 spiffy-calendar.php:1187 spiffy-calendar.php:1230
+#: views/admin-settings-tab-event-list.php:19
+msgid "Title"
+msgstr "Titel"
+
+#: spiffy-calendar.php:1145 spiffy-calendar.php:1189 spiffy-calendar.php:1232
+msgid "Comma separated category id list"
+msgstr "Komma gescheiden categorie ID lijst"
+
+#: spiffy-calendar.php:1281
+msgid "Time"
+msgstr "Tijd"
+
+#: spiffy-calendar.php:1293
+msgid "Posted by"
+msgstr "Toegevoegd door"
+
+#: spiffy-calendar.php:1873 spiffy-calendar.php:1880
+msgid "Sunday"
+msgstr "zo."
+
+#: spiffy-calendar.php:1874 spiffy-calendar.php:1878
+msgid "Monday"
+msgstr "ma."
+
+#: spiffy-calendar.php:1874 spiffy-calendar.php:1879
+msgid "Tuesday"
+msgstr "di."
+
+#: spiffy-calendar.php:1874 spiffy-calendar.php:1879
+msgid "Wednesday"
+msgstr "wo."
+
+#: spiffy-calendar.php:1875 spiffy-calendar.php:1879
+msgid "Thursday"
+msgstr "do."
+
+#: spiffy-calendar.php:1875 spiffy-calendar.php:1880
+msgid "Friday"
+msgstr "vr."
+
+#: spiffy-calendar.php:1875 spiffy-calendar.php:1880
+msgid "Saturday"
+msgstr "za."
+
+#: spiffy-calendar.php:1884 spiffy-calendar.php:1974 spiffy-calendar.php:2144
+msgid "January"
+msgstr "Januari"
+
+#: spiffy-calendar.php:1884 spiffy-calendar.php:1975 spiffy-calendar.php:2144
+msgid "February"
+msgstr "Februari"
+
+#: spiffy-calendar.php:1884 spiffy-calendar.php:1976 spiffy-calendar.php:2144
+msgid "March"
+msgstr "Maart"
+
+#: spiffy-calendar.php:1885 spiffy-calendar.php:1977 spiffy-calendar.php:2145
+msgid "April"
+msgstr "April"
+
+#: spiffy-calendar.php:1885 spiffy-calendar.php:1978 spiffy-calendar.php:2145
+msgid "May"
+msgstr "Mei"
+
+#: spiffy-calendar.php:1885 spiffy-calendar.php:1979 spiffy-calendar.php:2145
+msgid "June"
+msgstr "Juni"
+
+#: spiffy-calendar.php:1885 spiffy-calendar.php:1980 spiffy-calendar.php:2146
+msgid "July"
+msgstr "Juli"
+
+#: spiffy-calendar.php:1886 spiffy-calendar.php:1981 spiffy-calendar.php:2146
+msgid "August"
+msgstr "Augustus"
+
+#: spiffy-calendar.php:1886 spiffy-calendar.php:1982 spiffy-calendar.php:2146
+msgid "September"
+msgstr "September"
+
+#: spiffy-calendar.php:1886 spiffy-calendar.php:1983 spiffy-calendar.php:2147
+msgid "October"
+msgstr "Oktober"
+
+#: spiffy-calendar.php:1887 spiffy-calendar.php:1984 spiffy-calendar.php:2147
+msgid "November"
+msgstr "November"
+
+#: spiffy-calendar.php:1887 spiffy-calendar.php:1985 spiffy-calendar.php:2147
+msgid "December"
+msgstr "December"
+
+#: spiffy-calendar.php:1973
+msgid "Month"
+msgstr "Maand"
+
+#: spiffy-calendar.php:1987
+msgid "Year"
+msgstr "Jaar"
+
+#: spiffy-calendar.php:2014
+msgid "Go"
+msgstr "Doorgaan"
+
+#: spiffy-calendar.php:2083
+msgid "Category Key"
+msgstr "Categorie Legenda"
+
+#: spiffy-calendar.php:2113
+msgid "all day"
+msgstr "hele dag"
+
+#: spiffy-calendar.php:2117
+msgid "from "
+msgstr "van "
+
+#: spiffy-calendar.php:2118
+msgid " to "
+msgstr " tot "
+
+#: spiffy-calendar.php:2136 spiffy-calendar.php:2140
+msgid "Su"
+msgstr "Zo"
+
+#: spiffy-calendar.php:2136 spiffy-calendar.php:2139
+msgid "Mo"
+msgstr "Ma"
+
+#: spiffy-calendar.php:2136 spiffy-calendar.php:2139
+msgid "Tu"
+msgstr "Di"
+
+#: spiffy-calendar.php:2137 spiffy-calendar.php:2139
+msgid "We"
+msgstr "Wo"
+
+#: spiffy-calendar.php:2137 spiffy-calendar.php:2140
+msgid "Th"
+msgstr "Do"
+
+#: spiffy-calendar.php:2137 spiffy-calendar.php:2140
+msgid "Fr"
+msgstr "Vr"
+
+#: spiffy-calendar.php:2137 spiffy-calendar.php:2140
+msgid "Sa"
+msgstr "Za"
+
+#: views/admin-settings-tab-categories.php:24
+msgid "Edit Category"
+msgstr "Bewerk Categorie"
+
+#: views/admin-settings-tab-categories.php:28
+#: views/admin-settings-tab-categories.php:47
+#: views/admin-settings-tab-categories.php:70
+msgid "Category Name"
+msgstr "Categorie Naam"
+
+#: views/admin-settings-tab-categories.php:32
+msgid "Category Colour (Hex format)"
+msgstr "Categorie Kleur (Hex Formaat)"
+
+#: views/admin-settings-tab-categories.php:44
+#: views/admin-settings-tab-categories.php:56
+msgid "Add Category"
+msgstr "Categorie Toevoegen"
+
+#: views/admin-settings-tab-categories.php:51
+#: views/admin-settings-tab-categories.php:71
+msgid "Category Colour"
+msgstr "Categorie Kleur"
+
+#: views/admin-settings-tab-categories.php:58
+msgid "Manage Categories"
+msgstr "Beheer Categorieën"
+
+#: views/admin-settings-tab-categories.php:69
+#: views/admin-settings-tab-event-list.php:18
+msgid "ID"
+msgstr "ID"
+
+#: views/admin-settings-tab-categories.php:72
+#: views/admin-settings-tab-categories.php:86
+#: views/admin-settings-tab-event-list.php:31
+#: views/admin-settings-tab-event-list.php:100
+msgid "Edit"
+msgstr "Bewerk"
+
+#: views/admin-settings-tab-categories.php:73
+#: views/admin-settings-tab-categories.php:94
+#: views/admin-settings-tab-event-list.php:32
+#: views/admin-settings-tab-event-list.php:103
+msgid "Delete"
+msgstr "Verwijder"
+
+#: views/admin-settings-tab-categories.php:90
+#: views/admin-settings-tab-event-list.php:45
+#: views/admin-settings-tab-event-list.php:46
+#: views/admin-settings-tab-event-list.php:61
+#: views/admin-settings-tab-event-list.php:76
+msgid "N/A"
+msgstr "Niks"
+
+#: views/admin-settings-tab-categories.php:94
+msgid "Are you sure you want to delete the category named &quot;"
+msgstr "Weet je zeker dat je de categorie genaamd &quot; wil verwijderen?"
+
+#: views/admin-settings-tab-categories.php:107
+msgid "There are no categories in the database - something has gone wrong!"
+msgstr "Er zijn geen categorieën in de database - er is iets fout gegaan!"
+
+#: views/admin-settings-tab-event-edit.php:12
+msgid "Bad event ID"
+msgstr "Ongeldig evenement ID"
+
+#: views/admin-settings-tab-event-edit.php:17
+msgid "An event with that ID couldn't be found"
+msgstr "Een evenement met dat ID kon niet worden gevonden"
+
+#: views/admin-settings-tab-event-edit.php:36
+msgid "Edit Event"
+msgstr "Bewerk Evenement"
+
+#: views/admin-settings-tab-event-edit.php:43
+msgid "Event Title"
+msgstr "Evenement Titel"
+
+#: views/admin-settings-tab-event-edit.php:45
+msgid "Maximum 30 characters."
+msgstr "Maximum 30 karakters."
+
+#: views/admin-settings-tab-event-edit.php:48
+msgid "Event Description"
+msgstr "Evenement Beschrijving"
+
+#: views/admin-settings-tab-event-edit.php:54
+msgid "Event Category"
+msgstr "Evenement Categorie"
+
+#: views/admin-settings-tab-event-edit.php:76
+msgid "Event Link (Optional)"
+msgstr "Evenement Link (Optioneel)"
+
+#: views/admin-settings-tab-event-edit.php:80
+#: views/admin-settings-tab-event-list.php:20
+msgid "Start Date"
+msgstr "Start Datum"
+
+#: views/admin-settings-tab-event-edit.php:93
+#: views/admin-settings-tab-event-list.php:21
+msgid "End Date"
+msgstr "Eind Datum"
+
+#: views/admin-settings-tab-event-edit.php:105
+msgid "Start Time (hh:mm)"
+msgstr "Start Tijd (UU:MM)"
+
+#: views/admin-settings-tab-event-edit.php:121
+msgid "End Time (hh:mm)"
+msgstr "Eind Tijd (UU:MM)"
+
+#: views/admin-settings-tab-event-edit.php:135
+msgid "Recurring Events"
+msgstr "Terugkerende Evenementen"
+
+#: views/admin-settings-tab-event-edit.php:171
+#: views/admin-settings-tab-event-list.php:25
+msgid "Repeats"
+msgstr "Herhalend"
+
+#: views/admin-settings-tab-event-edit.php:179
+msgid "None"
+msgstr "Geen"
+
+#: views/admin-settings-tab-event-edit.php:180
+msgid "Weeks"
+msgstr "Weken"
+
+#: views/admin-settings-tab-event-edit.php:181
+msgid "Months (date)"
+msgstr "Maanden (datum)"
+
+#: views/admin-settings-tab-event-edit.php:182
+msgid "Months (day)"
+msgstr "Maanden (dag)"
+
+#: views/admin-settings-tab-event-edit.php:183
+msgid "Years"
+msgstr "Jaren"
+
+#: views/admin-settings-tab-event-edit.php:191
+#: views/admin-settings-tab-event-list.php:26
+msgid "Hide Events"
+msgstr "Verberg Evenementen"
+
+#: views/admin-settings-tab-event-edit.php:242
+#: views/admin-settings-tab-event-list.php:27
+msgid "Show Title"
+msgstr "Toon titel"
+
+#: views/admin-settings-tab-event-edit.php:247
+msgid ""
+"Entering True means the title of this event will be displayed. This is only "
+"used if Hide Events is True."
+msgstr ""
+"'True' betekent dat de titel van het evenement wordt getoond. Dit wordt "
+"alleen gebruikt wanneer de optie 'verborgen evenementen' op 'True' staat."
+
+#: views/admin-settings-tab-event-edit.php:250
+#: views/admin-settings-tab-event-list.php:28
+msgid "Image"
+msgstr "Afbeelding"
+
+#: views/admin-settings-tab-event-edit.php:273
+msgid "Save"
+msgstr "Opslaan"
+
+#: views/admin-settings-tab-event-edit.php:275
+msgid "Update"
+msgstr "Aangepast"
+
+#: views/admin-settings-tab-event-list.php:9
+msgid "Add New Event"
+msgstr "Evenement Toevoegen"
+
+#: views/admin-settings-tab-event-list.php:22
+msgid "Start Time"
+msgstr "Start Tijd"
+
+#: views/admin-settings-tab-event-list.php:23
+msgid "End Time"
+msgstr "Eind Tijd"
+
+#: views/admin-settings-tab-event-list.php:24
+msgid "Recurs"
+msgstr "Terugkerend"
+
+#: views/admin-settings-tab-event-list.php:29
+#: views/admin-settings-tab-options.php:99
+msgid "Author"
+msgstr "Auteur"
+
+#: views/admin-settings-tab-event-list.php:30
+msgid "Category"
+msgstr "Categorie"
+
+#: views/admin-settings-tab-event-list.php:50
+msgid "Never"
+msgstr "Nooit"
+
+#: views/admin-settings-tab-event-list.php:51
+msgid "Weekly"
+msgstr "Wekelijks"
+
+#: views/admin-settings-tab-event-list.php:52
+msgid "Monthly (date)"
+msgstr "Maandelijks (datum)"
+
+#: views/admin-settings-tab-event-list.php:53
+msgid "Monthly (day)"
+msgstr "Maandelijks (dag)"
+
+#: views/admin-settings-tab-event-list.php:54
+msgid "Yearly"
+msgstr "Jaarlijks"
+
+#: views/admin-settings-tab-event-list.php:55
+msgid "Every"
+msgstr "Alle"
+
+#: views/admin-settings-tab-event-list.php:55
+msgid "days"
+msgstr "dagen"
+
+#: views/admin-settings-tab-event-list.php:62
+msgid "Forever"
+msgstr "Eeuwig"
+
+#: views/admin-settings-tab-event-list.php:63
+msgid "Times"
+msgstr "Tijden"
+
+#: views/admin-settings-tab-event-list.php:103
+msgid "Are you sure you want to delete the event titled &quot;"
+msgstr "Weet je zeker dat het het evenement getiteld &quot; wilt verwijderen?"
+
+#: views/admin-settings-tab-event-list.php:112
+msgid "<p>There are no events in the database!</p>"
+msgstr "<p>Er zijn geen evenementen in de database!</p>"
+
+#: views/admin-settings-tab-options.php:93
+msgid "Event Manager Role"
+msgstr "Gebruikersrol"
+
+#: views/admin-settings-tab-options.php:97
+msgid "Subscriber"
+msgstr "Subscriber"
+
+#: views/admin-settings-tab-options.php:98
+msgid "Contributor"
+msgstr "Contributor"
+
+#: views/admin-settings-tab-options.php:100
+msgid "Editor"
+msgstr "Editor"
+
+#: views/admin-settings-tab-options.php:101
+msgid "Administrator"
+msgstr "Administrator"
+
+#: views/admin-settings-tab-options.php:103
+msgid "Choose the lowest user group that can manage events"
+msgstr "Kies de laagste  gebruikersrol die evenementen mag beheren"
+
+#: views/admin-settings-tab-options.php:108
+msgid "Display author name on events?"
+msgstr "Toon naam auteur in het evenement?"
+
+#: views/admin-settings-tab-options.php:112
+#: views/admin-settings-tab-options.php:123
+#: views/admin-settings-tab-options.php:135
+#: views/admin-settings-tab-options.php:146
+#: views/admin-settings-tab-options.php:157
+#: views/admin-settings-tab-options.php:169
+#: views/admin-settings-tab-options.php:180
+msgid "Yes"
+msgstr "Ja"
+
+#: views/admin-settings-tab-options.php:113
+#: views/admin-settings-tab-options.php:124
+#: views/admin-settings-tab-options.php:136
+#: views/admin-settings-tab-options.php:147
+#: views/admin-settings-tab-options.php:158
+#: views/admin-settings-tab-options.php:170
+#: views/admin-settings-tab-options.php:181
+msgid "No"
+msgstr "Nee"
+
+#: views/admin-settings-tab-options.php:126
+msgid ""
+"When this option is enabled the time and image will be listed with the event "
+"title. Note that time and image are always displayed in the popup window."
+msgstr ""
+"Als deze optie ingeschakeld is zal de tijd en afbeelding in de evenement "
+"titel getoond worden. Weet wel dat de tijd en afbeelding standaard al altijd "
+"in het popup scherm getoond worden."
+
+#: views/admin-settings-tab-options.php:131
+msgid "Display a jumpbox for changing month and year quickly?"
+msgstr "Een dropdown weergeven voor het snel wisselen van maand en jaar?"
+
+#: views/admin-settings-tab-options.php:142
+msgid "Display today's events?"
+msgstr "Toon evenementen van vandaag?"
+
+#: views/admin-settings-tab-options.php:153
+msgid "Display upcoming events?"
+msgstr "Aankomende evenementen weergeven?"
+
+#: views/admin-settings-tab-options.php:160
+msgid "for"
+msgstr "voor"
+
+#: views/admin-settings-tab-options.php:160
+msgid "days into the future"
+msgstr "dagen in de toekomst"
+
+#: views/admin-settings-tab-options.php:165
+msgid "Enable event categories?"
+msgstr "Evenement Categorieën inschakelen?"
+
+#: views/admin-settings-tab-options.php:176
+msgid "Open event links in new window?"
+msgstr "Evenement links openen in een nieuw scherm?"
+
+#: views/admin-settings-tab-options.php:187
+msgid "Configure the stylesheet for Calendar"
+msgstr "Configureer het stijlsjabloon voor Calendar"
+
+#: views/admin-settings-tab-options.php:191
+msgid "Tick this box if you wish to reset the Calendar style to default"
+msgstr "Vink deze box aan als je de Calendar stijl naar standaard wil resetten"
+
+#: views/admin-settings.php:12
+msgid "Spiffy Calendar Settings"
+msgstr "Spiffy Calendar instellingen"
+
+#. Description of the plugin/theme
+msgid ""
+"A full featured, simple to use Spiffy Calendar plugin for WordPress that "
+"allows you to manage and display your events and appointments."
+msgstr ""
+"Een complete, simpele gebruiksvriendelijke Spiffy Kalender plugin voor "
+"WordPress, waarmee jeje evenementen en/of afspraken kan beheren en tonen op "
+"je website. "

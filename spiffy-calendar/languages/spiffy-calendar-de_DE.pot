@@ -1,0 +1,598 @@
+# Loco Gettext template
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Spiffy Calendar 1.1.6\n"
+"Report-Msgid-Bugs-To: ipuci\n"
+"POT-Creation-Date: Wed, 10 Dec 2014 14:21:18 +0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Loco https://localise.biz\n"
+"X-Loco-Source-Locale: en_GB\n"
+"X-Loco-Project-Id: 4548\n"
+"X-Loco-Api-Version: 1.0.8"
+
+#: loco:5488435bf1612903df0fb176
+msgid "Administrator"
+msgstr ""
+
+#: loco:5488435bf1612903df0fb178
+msgid "April"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb17b
+msgid "August"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb17c
+msgid "Author"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb180
+msgid "Calendar"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb183
+msgid "Category"
+msgstr ""
+
+#: loco:5488435df1612903df0fb18e
+msgid "Contributor"
+msgstr ""
+
+#: loco:5488435df1612903df0fb18f
+msgid "December"
+msgstr ""
+
+#: loco:5488435df1612903df0fb190
+msgid "Delete"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb197
+msgid "Edit"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb19a
+msgid "Editor"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb1a0
+msgid "Error"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1a8
+msgid "Failure"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1a9
+msgid "February"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1aa
+msgid "Forever"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1ab
+msgid "Fr"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1ac
+msgid "Friday"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1ad
+msgid "Go"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1ae
+msgid "ID"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1af
+msgid "Image"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1b0
+msgid "January"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1b1
+msgid "July"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1b2
+msgid "June"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b5
+msgid "March"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b6
+msgid "May"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b8
+msgid "Mo"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b9
+msgid "Monday"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1ba
+msgid "Month"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1c0
+msgid "Never"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c1
+msgid "Next"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c2
+msgid "No"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c3
+msgid "None"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c4
+msgid "November"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c5
+msgid "October"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c9
+msgid "Prev"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1cb
+msgid "Recurs"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1cc
+msgid "Repeats"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1ce
+msgid "Sa"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1cf
+msgid "Saturday"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d0
+msgid "Save"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d1
+msgid "September"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d8
+msgid "Su"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d9
+msgid "Subscriber"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1da
+msgid "Sunday"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1db
+msgid "Th"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e5
+msgid "Thursday"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e7
+msgid "Time"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e8
+msgid "Times"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e9
+msgid "Title"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1eb
+msgid "Tu"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1ec
+msgid "Tuesday"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1ee
+msgid "We"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1ef
+msgid "Wednesday"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f0
+msgid "Weekly"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f1
+msgid "Weeks"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f3
+msgid "Year"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f4
+msgid "Yearly"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f5
+msgid "Years"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f6
+msgid "Yes"
+msgstr ""
+
+#: loco:5488435bf1612903df0fb174
+msgid "Add Category"
+msgstr ""
+
+#: loco:5488435bf1612903df0fb175
+msgid "Add Event"
+msgstr ""
+
+#: loco:5488435bf1612903df0fb177
+msgid "An event with that ID couldn't be found"
+msgstr ""
+
+#: loco:5488435bf1612903df0fb179
+msgid "Are you sure you want to delete the category named &quot;"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb17a
+msgid "Are you sure you want to delete the event titled &quot;"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb17d
+msgid "Bad event ID"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb17e
+msgid "Bev Stofko"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb17f
+msgid "Both start and end dates must be entered and be in the format YYYY-MM-DD"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb181
+msgid "Calendar Config"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb182
+msgid "Calendar Options"
+msgstr ""
+
+#: loco:5488435df1612903df0fb188
+msgid "Category added successfully"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb184
+msgid "Category Colour"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb185
+msgid "Category Colour (Hex format)"
+msgstr ""
+
+#: loco:5488435df1612903df0fb189
+msgid "Category deleted successfully"
+msgstr ""
+
+#: loco:5488435df1612903df0fb18a
+msgid "Category edited successfully"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb186
+msgid "Category Key"
+msgstr ""
+
+#: loco:5488435cf1612903df0fb187
+msgid "Category Name"
+msgstr ""
+
+#: loco:5488435df1612903df0fb18b
+msgid "Choose the lowest user group that may manage events"
+msgstr ""
+
+#: loco:5488435df1612903df0fb18c
+msgid "Comma separated category id list"
+msgstr ""
+
+#: loco:5488435df1612903df0fb18d
+msgid "Configure the stylesheet for Calendar"
+msgstr ""
+
+#: loco:54884365f1612903df0fb1fc
+msgid "days into the future"
+msgstr ""
+
+#: loco:5488435df1612903df0fb191
+msgid ""
+"Despite issuing a request to delete, the event still remains in the database. "
+"Please investigate."
+msgstr ""
+
+#: loco:5488435df1612903df0fb192
+msgid "Display a jumpbox for changing month and year quickly?"
+msgstr ""
+
+#: loco:5488435df1612903df0fb193
+msgid "Display todays events?"
+msgstr ""
+
+#: loco:5488435df1612903df0fb194
+msgid "Display upcoming events?"
+msgstr ""
+
+#: loco:5488435df1612903df0fb195
+msgid "Do you want to display the author name on events?"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb196
+msgid "Do you want to enable detailed event display?"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb198
+msgid "Edit Category"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb199
+msgid "Edit Event"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb19b
+msgid "Enable event categories?"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb19c
+msgid "End Date"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb19d
+msgid "End Time"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb19e
+msgid "End Time (hh:mm)"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb19f
+msgid ""
+"Entering 0 means forever. Where the recurrance interval is left at none, the "
+"event will not reoccur."
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1a5
+msgid "Event added. It will now show in your calendar."
+msgstr ""
+
+#: loco:5488435ef1612903df0fb1a1
+msgid "Event Category"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1a6
+msgid "Event deleted successfully"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb1a2
+msgid "Event Description"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb1a3
+msgid "Event Link (Optional)"
+msgstr ""
+
+#: loco:5488435ef1612903df0fb1a4
+msgid "Event Title"
+msgstr ""
+
+#: loco:5488435ff1612903df0fb1a7
+msgid "Event updated successfully."
+msgstr ""
+
+#: loco:54884365f1612903df0fb1fd
+msgid "for"
+msgstr ""
+
+#: loco:54884365f1612903df0fb1fe
+msgid "http://www.stofko.ca"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b3
+msgid "Manage Categories"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b4
+msgid "Manage Events"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1b7
+msgid "Mini Calendar"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1bb
+msgid "Monthly (date)"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1bc
+msgid "Monthly (day)"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1bd
+msgid "Months (date)"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1be
+msgid "Months (day)"
+msgstr ""
+
+#: loco:54884360f1612903df0fb1bf
+msgid "N/A"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c6
+msgid "Open event links in new window?"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c7
+msgid "Optional, set blank if not required."
+msgstr ""
+
+#: loco:54884361f1612903df0fb1c8
+msgid "Posted by"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1ca
+msgid "Recurring Events"
+msgstr ""
+
+#: loco:54884361f1612903df0fb1cd
+msgid "Repeats for"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d2
+msgid "Settings saved"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d3
+msgid "Spiffy Calendar"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d4
+msgid "Spiffy Calendar Options"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d5
+msgid "Start Date"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d6
+msgid "Start Time"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1d7
+msgid "Start Time (hh:mm)"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1dd
+msgid ""
+"The end time field must either be blank or be entered in the format hh:mm am/"
+"pm"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1de
+msgid ""
+"The event could not be added to the database. This may indicate a problem "
+"with your database or the way in which it is configured."
+msgstr ""
+
+#: loco:54884363f1612903df0fb1df
+msgid ""
+"The event could not be updated. This may indicate a problem with your "
+"database or the way in which it is configured."
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e0
+msgid "The event title must be between 1 and 30 characters in length"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e1
+msgid ""
+"The repetition value must be 0 unless a type of recurrance is selected in "
+"which case the repetition value must be 0 or higher"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e2
+msgid "The time field must either be blank or be entered in the format hh:mm am/pm"
+msgstr ""
+
+#: loco:54884362f1612903df0fb1dc
+msgid "The URL entered must either be prefixed with http:// or be completely blank"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e3
+msgid "There are no categories in the database - something has gone wrong!"
+msgstr ""
+
+#: loco:5488435bf1612903df0fb173
+msgid "<p>There are no events in the database!</p>"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e4
+msgid ""
+"This plugin allows you to display a calendar of all your events and "
+"appointments as a page on your site."
+msgstr ""
+
+#: loco:54884363f1612903df0fb1e6
+msgid "Tick this box if you wish to reset the Calendar style to default"
+msgstr ""
+
+#: loco:54884363f1612903df0fb1ea
+msgid "Today's Events"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1ed
+msgid "Upcoming Events"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f2
+msgid ""
+"When this option is enabled the time and image will be listed with the event "
+"title. Note that time and image are always displayed in the popup window."
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f7
+msgid "You can't delete an event if you haven't submitted an event id"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f8
+msgid "You can't update an event if you haven't submitted an event id"
+msgstr ""
+
+#: loco:54884364f1612903df0fb1f9
+msgid "You must provide an event id in order to edit it"
+msgstr ""
+
+#: loco:54884365f1612903df0fb1fa
+msgid ""
+"Your date formatting is correct but one or more of your dates is invalid. "
+"Check for number of days in month and leap year related errors."
+msgstr ""
+
+#: loco:54884365f1612903df0fb1fb
+msgid "Your event end date must be either after or the same as your event begin date"
+msgstr ""

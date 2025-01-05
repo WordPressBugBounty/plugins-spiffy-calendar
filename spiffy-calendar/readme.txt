@@ -1,9 +1,9 @@
 === Spiffy Calendar ===
 Contributors: spiffyplugins
-Donate Link:  https://spiffycalendar.spiffyplugins.ca/bonus-add-ons/
+Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.6
-Stable tag: 4.9.15
+Stable tag: 4.9.16
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -11,13 +11,13 @@ Manage and display your events in a responsive calendar with multiple views, wid
 
 == Description ==
 
-Manage and display your events in a responsive calendar with multiple views, widgets and shortcodes. Color-coded categories and recurrence support. The premium [Bonus Add-Ons](https://spiffycalendar.spiffyplugins.ca/bonus-add-ons/) supplements the plugin with additional themes, customizer support, ICS export, front end submit, CSV import/export and custom fields.
+Manage and display your events in a responsive calendar with multiple views, widgets and shortcodes. Color-coded categories and recurrence support. The premium [Bonus Add-Ons](https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/) supplements the plugin with additional themes, customizer support, ICS export, front end submit, CSV import/export and custom fields.
 
->[Demo and Documentation](https://spiffycalendar.spiffyplugins.ca)
+>[Demo and Documentation](https://spiffyplugins.ca/spiffycalendar)
 >
->[Click here](https://spiffycalendar.spiffyplugins.ca/css-snippets/) for helpful CSS snippets.
+>[Click here](https://spiffyplugins.ca/spiffycalendar/css-snippets/) for helpful CSS snippets.
 >
->[Click here](https://spiffycalendar.spiffyplugins.ca/bonus-add-ons/) to learn about Bonus Add-Ons.
+>[Click here](https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/) to learn about Bonus Add-Ons.
 
 == Features ==
 
@@ -73,7 +73,7 @@ Manage and display your events in a responsive calendar with multiple views, wid
 * event recurrence details
 * event hiding details
 * event image
-* custom fields [(premium)](https://spiffycalendar.spiffyplugins.ca/bonus-add-ons/)
+* custom fields [(premium)](https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/)
 	
 = Schedule a wide variety of recurring events. =
 
@@ -108,7 +108,7 @@ Manage and display your events in a responsive calendar with multiple views, wid
 * Import/Export events via CSV
 * Custom fields
 
-[Learn more about bonus add-ons](https://spiffycalendar.spiffyplugins.ca/bonus-add-ons/)
+[Learn more about bonus add-ons](https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/)
 	
 == Languages ==
 
@@ -188,6 +188,10 @@ If you have a caching plugin, or if your theme has built-in caching, then you ne
 9. Upcoming events list, expanded view
 
 == Changelog ==
+
+= 4.9.16 (January 5, 2025) =
+
+* Tweak: new support URL
 
 = 4.9.15 (August 19, 2024) =
 = 4.9.14 (August 19, 2024) =
@@ -650,7 +654,7 @@ PHP timezone setting and correct it to UTC if necessary.
 
 NOTE: **You will need to re-add your widgets after upgrading!**
 
-NOTE: *It is recommended that you reset your calendar styles to the default.* However, if you performed customization on your styles and don't wish to lose your customization, you should check that the calendar is still displaying as expected. Default styles are now always loaded; custom CSS will be appended to the default styles. This change will allow for proper future style updates. [Click here](https://spiffycalendar.spiffyplugins.ca/css-snippets/) for helpful CSS snippets.
+NOTE: *It is recommended that you reset your calendar styles to the default.* However, if you performed customization on your styles and don't wish to lose your customization, you should check that the calendar is still displaying as expected. Default styles are now always loaded; custom CSS will be appended to the default styles. This change will allow for proper future style updates. [Click here](https://spiffyplugins.ca/spiffycalendar/css-snippets/) for helpful CSS snippets.
 
 * New: Event admin list updated to WP format -- Now supports bulk event deletion, copying events, sorting the event list by category
 * New: Widgets updated to use Widget API - you can now add multiple widgets

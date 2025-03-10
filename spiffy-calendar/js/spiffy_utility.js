@@ -1,7 +1,7 @@
 /*
 **	Spiffy Calendar utility scripts on admin pages
 **
-**  Version 1.9
+**  Version 1.10
 **
 **  Note update version in both Spiffy Calendar and Bonus Add Ons
 */
@@ -37,6 +37,7 @@ jQuery(document).ready(function($){
 
 	$(".spiffy-date-field").datepicker({
 		dateFormat : "yy-mm-dd",
+		numberOfMonths: 2,
 		showButtonPanel: false,
 		beforeShowDay: function (date) {
 			var date1 = $.datepicker.parseDate('yy-mm-dd', $("#event_begin").val());

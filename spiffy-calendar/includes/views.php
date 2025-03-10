@@ -16,13 +16,14 @@ class SPIFFYCAL_Views {
 	private $mod_rewrite_months = array(1=>'jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec');
 
 	function __construct () {
+		add_filter( 'the_content', array( $this, 'single_event_content') );
 	}
 	
-	// Main calendar output
+	/*
+	** Main calendar output
+	*/
 	function calendar($cat_list = '', $title = '') {
 		global $wpdb, $spiffy_calendar;
-
-		$this->get_all_categories();
 
 		// Build day of week names array
 		$name_days = $this->get_day_names('full');
@@ -84,7 +85,7 @@ class SPIFFYCAL_Views {
 					onclick="return false;" 
 					data-list="' .  __('List View','spiffy-calendar') . '" 
 					data-grid="' .  __('Grid View','spiffy-calendar') . '"
-					data-month="'. date_i18n("F", mktime(null, null, null, $c_month, 1)) . '"
+					data-month="'. date_i18n("F", mktime(0, null, null, $c_month, 1)) . '"
 		>' 
 			. (($toggle_state == 'grid') ? __('List View','spiffy-calendar') : __('Grid View','spiffy-calendar')) 
 			. '</a>
@@ -115,7 +116,7 @@ class SPIFFYCAL_Views {
 				$qsa = array();
 				parse_str($_SERVER['QUERY_STRING'], $qsa);
 				foreach ($qsa as $name => $argument) {
-					if ($name != 'month' && $name != 'yr' && $name != 'grid-list-toggle') {
+					if ($name != 'month' && $name != 'yr' && $name != 'grid-list-toggle' && is_string($name) && is_string($argument)) {
 						$calendar_body .= '<input type="hidden" name="'.strip_tags($name).'" value="'.strip_tags($argument).'" />';
 					}
 				}
@@ -124,18 +125,18 @@ class SPIFFYCAL_Views {
 			// We build the months in the switcher
 			$calendar_body .= '
 					<select name="month">
-						<option value="jan"'.$this->calendar_month_comparison($c_month, 1).'>'.date_i18n("F", mktime(null, null, null, 1, 1)).'</option>
-						<option value="feb"'.$this->calendar_month_comparison($c_month, 2).'>'.date_i18n("F", mktime(null, null, null, 2, 1)).'</option>
-						<option value="mar"'.$this->calendar_month_comparison($c_month, 3).'>'.date_i18n("F", mktime(null, null, null, 3, 1)).'</option>
-						<option value="apr"'.$this->calendar_month_comparison($c_month, 4).'>'.date_i18n("F", mktime(null, null, null, 4, 1)).'</option>
-						<option value="may"'.$this->calendar_month_comparison($c_month, 5).'>'.date_i18n("F", mktime(null, null, null, 5, 1)).'</option>
-						<option value="jun"'.$this->calendar_month_comparison($c_month, 6).'>'.date_i18n("F", mktime(null, null, null, 6, 1)).'</option>
-						<option value="jul"'.$this->calendar_month_comparison($c_month, 7).'>'.date_i18n("F", mktime(null, null, null, 7, 1)).'</option> 
-						<option value="aug"'.$this->calendar_month_comparison($c_month, 8).'>'.date_i18n("F", mktime(null, null, null, 8, 1)).'</option> 
-						<option value="sep"'.$this->calendar_month_comparison($c_month, 9).'>'.date_i18n("F", mktime(null, null, null, 9, 1)).'</option> 
-						<option value="oct"'.$this->calendar_month_comparison($c_month, 10).'>'.date_i18n("F", mktime(null, null, null, 10, 1)).'</option> 
-						<option value="nov"'.$this->calendar_month_comparison($c_month, 11).'>'.date_i18n("F", mktime(null, null, null, 11, 1)).'</option> 
-						<option value="dec"'.$this->calendar_month_comparison($c_month, 12).'>'.date_i18n("F", mktime(null, null, null, 12, 1)).'</option> 
+						<option value="jan"'.$this->calendar_month_comparison($c_month, 1).'>'.date_i18n("F", mktime(0, null, null, 1, 1)).'</option>
+						<option value="feb"'.$this->calendar_month_comparison($c_month, 2).'>'.date_i18n("F", mktime(0, null, null, 2, 1)).'</option>
+						<option value="mar"'.$this->calendar_month_comparison($c_month, 3).'>'.date_i18n("F", mktime(0, null, null, 3, 1)).'</option>
+						<option value="apr"'.$this->calendar_month_comparison($c_month, 4).'>'.date_i18n("F", mktime(0, null, null, 4, 1)).'</option>
+						<option value="may"'.$this->calendar_month_comparison($c_month, 5).'>'.date_i18n("F", mktime(0, null, null, 5, 1)).'</option>
+						<option value="jun"'.$this->calendar_month_comparison($c_month, 6).'>'.date_i18n("F", mktime(0, null, null, 6, 1)).'</option>
+						<option value="jul"'.$this->calendar_month_comparison($c_month, 7).'>'.date_i18n("F", mktime(0, null, null, 7, 1)).'</option> 
+						<option value="aug"'.$this->calendar_month_comparison($c_month, 8).'>'.date_i18n("F", mktime(0, null, null, 8, 1)).'</option> 
+						<option value="sep"'.$this->calendar_month_comparison($c_month, 9).'>'.date_i18n("F", mktime(0, null, null, 9, 1)).'</option> 
+						<option value="oct"'.$this->calendar_month_comparison($c_month, 10).'>'.date_i18n("F", mktime(0, null, null, 10, 1)).'</option> 
+						<option value="nov"'.$this->calendar_month_comparison($c_month, 11).'>'.date_i18n("F", mktime(0, null, null, 11, 1)).'</option> 
+						<option value="dec"'.$this->calendar_month_comparison($c_month, 12).'>'.date_i18n("F", mktime(0, null, null, 12, 1)).'</option> 
 					</select>
 					<select name="yr">';
 
@@ -170,7 +171,7 @@ class SPIFFYCAL_Views {
 			</td>';
 		} else {
 			$calendar_body .= '
-			<td class="calendar-month">'.date_i18n("F", mktime(null, null, null, $c_month, 1)).' '.$c_year.'</td>';
+			<td class="calendar-month">'.date_i18n("F", mktime(0, null, null, $c_month, 1)).' '.$c_year.'</td>';
 		}
 		$calendar_body .= '
 			<td class="calendar-next">' . $this->next_month($c_year, $c_month, false, $toggle_state) . '</td>
@@ -227,7 +228,7 @@ class SPIFFYCAL_Views {
 					}
 					$date_timestamp = mktime (0,0,0,$c_month,$i,$c_year);
 					$calendar_body .= '	<td class="spiffy-day-' . $i . ' ' . (date("Ymd", $date_timestamp)==date("Ymd",$current_timestamp)?'current-day':'').$weekend.$no_events_class.' day-with-date">';
-					if ($toggle_state == 'list') $calendar_body .= '<span class="spiffy-month-name">' . date_i18n("F", mktime(null, null, null, $c_month, 1)) . '</span>';
+					if ($toggle_state == 'list') $calendar_body .= '<span class="spiffy-month-name">' . date_i18n("F", mktime(0, null, null, $c_month, 1)) . '</span>';
 					$calendar_body .= '<span class="day-number'.$weekend.'">'.$i++.'</span><span class="spiffy-event-group">' . $this->draw_grid_events($grabbed_events) . '</span></td>';
 				} else {
 					// This box is empty
@@ -263,12 +264,17 @@ class SPIFFYCAL_Views {
 	<col>
 </colgroup>';
 		$output .= '
-<tr><td colspan="2" class="cat-key-cell"><strong>'.esc_html($spiffy_calendar->current_options['category_plural']).'</strong></td></tr>';
+<tr><td colspan="2" class="cat-key-cell"><strong>'.esc_html($this->format_category( false )).'</strong></td></tr>';
 		$filtered_cats = explode(',',$cat_list);
-		foreach($this->categories as $cat_detail) {
-			if ( ($cat_list == '') || (in_array($cat_detail->category_id, $filtered_cats))) {
-				$output .= '<tr class="'.esc_html($row_classes).'" data-category="'.esc_html($cat_detail->category_id).'"><td style="background-color:' . esc_html($cat_detail->category_colour) . '; " class="cat-key-cell"></td>
-<td class="cat-key-cell" data-category="'.esc_html($cat_detail->category_id).'">&nbsp;'.esc_html($cat_detail->category_name).'</td></tr>';
+		$terms = get_terms( array( 'taxonomy'   => 'spiffy_categories', 'hide_empty' => false) );
+		if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+			foreach($terms as $term) {
+				$color = get_term_meta ($term->term_id, 'color', true);
+				if (!isset ($color)) $color="#000000";
+				if ( ($cat_list == '') || (in_array($term->term_id, $filtered_cats))) {
+					$output .= '<tr class="'.esc_html($row_classes).'" data-category="'.esc_html($term->term_id).'"><td style="background-color:' . esc_html($color) . '; " class="cat-key-cell"></td>
+	<td class="cat-key-cell" data-category="'.esc_html($term->term_id).'">&nbsp;'.esc_html($term->name).'</td></tr>';
+				}
 			}
 		}
 		$output .= '</table>';		
@@ -303,47 +309,32 @@ class SPIFFYCAL_Views {
 	/*
 	** Draw an event to the screen in column format
 	** $event = full event
-	** $date = start date timestamp
+	** $date_timestamp = start date timestamp
 	*/
 	function draw_event_column($event, $date_timestamp = '') {
 		global $wpdb, $spiffy_calendar, $spiffycal_custom_fields;
-
-		$this->get_all_categories();
 
 		$cat_css = '';
 		$cat_class = '';
 		$cat_name_prefix = '';
 		if ($spiffy_calendar->current_options['enable_categories'] == 'true') {
-			foreach ($this->categories as $cat_details) {
-				if ($cat_details->category_id == $event->event_category) {
-					$cat_css = ' style="border-bottom: solid 4px ' . esc_html($cat_details->category_colour) . ';"';
-					$cat_class = ' category_' . $cat_details->category_id;
-					if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
-						$cat_name_prefix = esc_html(stripslashes($cat_details->category_name)) . ' - ';
-					}
-					break;
+			if ( $event->terms ) { 
+				// use the color of the first category
+				$color = get_term_meta($event->terms[0]->term_id, 'color', true);
+				$cat_css = ' style="border-bottom: solid 4px ' . esc_html($color) . ';"';
+				$cat_class = ' category_' . $event->terms[0]->term_id;
+				if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
+					$cat_name_prefix = esc_html(stripslashes($event->terms[0]->name)) . ' - ';
 				}
 			}
 		}
 
-		// Get time formatted
-		if ($event->event_all_day != "T") {
-			$time = date(get_option('time_format'), strtotime($event->event_time));
-		} else {
-			$time = "";
-		}
-		if ($event->event_end_time != "00:00:00") {
-			$end_time = date(get_option('time_format'), strtotime($event->event_end_time));
-		} else {
-			$end_time = "";
-		}
-
-		$details = '<span class="spiffy-column-event' . $cat_class . ' spiffy-clearfix spiffy-eventid-' . $event->event_id . '">';
+		$details = '<span class="spiffy-column-event' . $cat_class . ' spiffy-clearfix spiffy-eventid-' . $event->ID . '">';
 
 		// Image goes first in the column
-		if ($event->event_image > 0) {
-			$image = wp_get_attachment_image_src( $event->event_image, 'medium');
-			$details .= '<span class="spiffy-img"><img src="' . $image[0] . '" alt="" /></span>';
+		$image = get_the_post_thumbnail_url ($event->ID, 'medium');
+		if ($image) {
+			$details .= '<span class="spiffy-img"><img src="' . $image . '" alt="" /></span>';
 		}
 
 
@@ -358,8 +349,8 @@ class SPIFFYCAL_Views {
 			$details .= '</span>';
 		}
 		$details .= '<span class="spiffy-title">';
-		if ($event->event_link != '') { 
-			$linkurl = esc_url(stripslashes($event->event_link)); 
+		if ($event->meta['_spiffy_event_link'][0] != '') { 
+			$linkurl = esc_url(stripslashes($event->meta['_spiffy_event_link'][0])); 
 			if ($spiffy_calendar->current_options['enable_new_window'] == 'true') {
 				$target = ' target="_blank"';
 			} else {
@@ -368,47 +359,44 @@ class SPIFFYCAL_Views {
 			$details .= '<a href="'.$linkurl.'" '.$target.'>';
 		}
 
-		$details .= $cat_name_prefix . esc_html(stripslashes($event->event_title));
-		if ($event->event_link != '') { 
+		$details .= $cat_name_prefix . esc_html(stripslashes($event->post_title));
+		if ($event->meta['_spiffy_event_link'][0] != '') { 
 			$details .= '</a>';
 		}
 
 		$details .= '</span></span>';
-		$details .= '<span class="spiffy-desc">' . $this->format_desc($event->event_desc) . '</span>';
+		$details .= '<span class="spiffy-desc">' . $this->format_desc($event->post_content) . '</span>';
 		$details .= '<span class="spiffy-meta">';
 		if ($spiffy_calendar->current_options['display_author'] == 'true') {
-			if ($event->event_author > 0) {
-				$e = get_userdata(stripslashes($event->event_author));
+			if ($event->post_author > 0) {
+				$e = get_userdata(stripslashes($event->post_author));
 				$details .= '<span class="spiffy-author"><span>'.__('Posted by', 'spiffy-calendar').':</span> '.$e->display_name . '</span>';
 			}
 		}
-		$details .= '<span class="spiffy-location">' . $this->format_location($event->event_location, $event->event_link_location) . '</span>';
+		$details .= '<span class="spiffy-location">' . $this->format_location($event->meta['_spiffy_event_location'][0], $event->meta['_spiffy_event_link_location'][0]) . '</span>';
 
-		if (($date_timestamp != '') && ($event->event_begin != $event->event_end)) {
+		if (($date_timestamp != '') && ($event->meta['_spiffy_event_begin'][0] != $event->meta['_spiffy_event_end'][0])) {
 			$details .= '<span class="spiffy-column-date">';
 			$details .= date_i18n('M j', $event->begin_timestamp) . ' - ';
 
-			$end = $event->begin_timestamp + strtotime($event->event_end) - strtotime($event->event_begin);
+			$end = $event->begin_timestamp + strtotime($event->meta['_spiffy_event_end'][0]) - strtotime($event->meta['_spiffy_event_begin'][0]);
 			$details .= date_i18n('M j', $end);
 			$details .= '</span>';
 		}
 		
-		if ($event->event_all_day != "T") {
-			$details .= '<span class="spiffy-time">'. $time;
-			if ($event->event_end_time != "00:00:00") {
-				$details .= ' - ' . $end_time;
-			}
-			$details .= '</span>';
-		}
+		$time_str = $this->format_times ( $event->meta['_spiffy_event_time'][0], $event->meta['_spiffy_event_end_time'][0] );
+		if ($time_str != "") {
+			$details .= '<span class="spiffy-time">'. $time_str . '</span>';
+		} 
 
-		if ($event->event_link != '') { 
-			$linkurl = esc_url(stripslashes($event->event_link)); 
+		if ($event->meta['_spiffy_event_link'][0] != '') { 
+			$linkurl = esc_url(stripslashes($event->meta['_spiffy_event_link'][0])); 
 			if ($spiffy_calendar->current_options['enable_new_window'] == 'true') {
 				$target = ' target="_blank"';
 			} else {
 				$target = '';
 			}
-			$details .= '<span class="spiffy-link"><a href="' . $linkurl . '" ' . $target . '>' . $spiffy_calendar->current_options['more_details'] . '</a></span>';
+			$details .= '<span class="spiffy-link"><a href="' . $linkurl . '" ' . $target . '>' . $this->format_more_details () . '</a></span>';
 		}
 
 		if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
@@ -424,44 +412,31 @@ class SPIFFYCAL_Views {
 
 	/*
 	** Draw an event to the screen in expanded format
+	**
+	** $event consists of post data, meta and post terms
 	*/
 	function draw_event_expanded($event) {
-		global $wpdb, $spiffy_calendar, $spiffycal_custom_fields;
-
-		$this->get_all_categories();
+		global $spiffy_calendar, $spiffycal_custom_fields;
 
 		$cat_css = '';
 		$cat_class = '';
 		$cat_name_prefix = '';
 		if ($spiffy_calendar->current_options['enable_categories'] == 'true') {
-			foreach ($this->categories as $cat_details) {
-				if ($cat_details->category_id == $event->event_category) {
-					$cat_css = ' style="color:' . esc_html($cat_details->category_colour) . ';"';
-					$cat_class = ' category_' . $cat_details->category_id;
-					if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
-						$cat_name_prefix = esc_html(stripslashes($cat_details->category_name)) . ' - ';
-					}
-					break;
+			if ( $event->terms ) { 
+				// use the color of the first category
+				$color = get_term_meta($event->terms[0]->term_id, 'color', true);
+				$cat_css = ' style="color:' . esc_html($color) . ';"';
+				$cat_class = ' category_' . $event->terms[0]->term_id;
+				if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
+					$cat_name_prefix = esc_html(stripslashes($event->terms[0]->name)) . ' - ';
 				}
 			}
 		}
 
-		// Get time formatted
-		if ($event->event_all_day != "T") {
-			$time = date(get_option('time_format'), strtotime($event->event_time));
-		} else {
-			$time = "";
-		}
-		if ($event->event_end_time != "00:00:00") {
-			$end_time = date(get_option('time_format'), strtotime($event->event_end_time));
-		} else {
-			$end_time = "";
-		}
-
-		$details = '<span class="spiffy-expanded-event' . $cat_class . ' spiffy-clearfix spiffy-eventid-' . $event->event_id . '">';
+		$details = '<span class="spiffy-expanded-event' . $cat_class . ' spiffy-clearfix spiffy-eventid-' . $event->ID . '">';
 		$details .= '<span class="spiffy-title"' . $cat_css . '>';
-		if ($event->event_link != '') { 
-			$linkurl = esc_url(stripslashes($event->event_link)); 
+		if ($event->meta['_spiffy_event_link'][0] != '') { 
+			$linkurl = esc_url(stripslashes($event->meta['_spiffy_event_link'][0])); 
 			if ($spiffy_calendar->current_options['enable_new_window'] == 'true') {
 				$target = ' target="_blank"';
 			} else {
@@ -470,39 +445,36 @@ class SPIFFYCAL_Views {
 			$details .= '<a href="'.$linkurl.'" '.$cat_css.$target.'>';
 		}
 
-		$details .= $cat_name_prefix . esc_html(stripslashes($event->event_title));
-		if ($event->event_link != '') { 
+		$details .= $cat_name_prefix . esc_html(stripslashes($event->post_title));
+		if ($event->meta['_spiffy_event_link'][0] != '') { 
 			$details .= '</a>';
 		}
 		$details .= '</span><span class="spiffy-meta">';
-		if ($event->event_all_day != "T") {
-			$details .= '<span class="spiffy-time">'. $time;
-			if ($event->event_end_time != "00:00:00") {
-				$details .= ' - ' . $end_time;
-			}
-			$details .= '</span>';
-		}
+		$time_str = $this->format_times ( $event->meta['_spiffy_event_time'][0], $event->meta['_spiffy_event_end_time'][0] );
+		if ($time_str != "") {
+			$details .= '<span class="spiffy-time">'. $time_str . '</span>';
+		} 
 		if ($spiffy_calendar->current_options['display_author'] == 'true') {
-			if ($event->event_author > 0) {
-				$e = get_userdata(stripslashes($event->event_author));
+			if ($event->post_author > 0) {
+				$e = get_userdata(stripslashes($event->post_author));
 				$details .= '<span class="spiffy-author"><span>'.__('Posted by', 'spiffy-calendar').':</span> '.$e->display_name . '</span>';
 			}
 		}
 		$details .= '</span>'; // end spiffy-meta
-		if ($event->event_image > 0) {
-			$image = wp_get_attachment_image_src( $event->event_image, 'medium');
-			$details .= '<span class="spiffy-img"><img src="' . $image[0] . '" alt="" /></span>';
+		$image = get_the_post_thumbnail_url ($event->ID, 'medium');
+		if ($image) {
+			$details .= '<span class="spiffy-img"><img src="' . $image . '" alt="" /></span>';
 		}
-		$details .= '<span class="spiffy-desc">' . $this->format_desc($event->event_desc) . '</span>';
-		$details .= '<span class="spiffy-location">' . $this->format_location($event->event_location, $event->event_link_location) . '</span>';
-		if ($event->event_link != '') { 
-			$linkurl = esc_url(stripslashes($event->event_link)); 
+		$details .= '<span class="spiffy-desc">' . $this->format_desc($event->post_content) . '</span>';
+		$details .= '<span class="spiffy-location">' . $this->format_location($event->meta['_spiffy_event_location'][0], $event->meta['_spiffy_event_link_location'][0]) . '</span>';
+		if ($event->meta['_spiffy_event_link'][0] != '') { 
+			$linkurl = esc_url(stripslashes($event->meta['_spiffy_event_link'][0])); 
 			if ($spiffy_calendar->current_options['enable_new_window'] == 'true') {
 				$target = ' target="_blank"';
 			} else {
 				$target = '';
 			}
-			$details .= '<span class="spiffy-link"><a href="' . $linkurl . '" ' . $cat_css . $target . '>' . $spiffy_calendar->current_options['more_details'] . '</a></span>';
+			$details .= '<span class="spiffy-link"><a href="' . $linkurl . '" ' . $cat_css . $target . '>' . $this->format_more_details () . '</a></span>';
 		}
 
 		if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
@@ -521,110 +493,88 @@ class SPIFFYCAL_Views {
 	**
 	**  type = 'list' or 'grid' to determine if reverse category colouring should occur
 	*/
-	function draw_event_popup($event, $type)
-	{
+	function draw_event_popup($event, $type) {
 		global $wpdb, $spiffy_calendar, $spiffycal_custom_fields;
-
-		$this->get_all_categories();
 
 		$style_main = '';
 		$style_popup = '';
 		$cat_class = '';
 		$cat_name_prefix = '';
 		if ($spiffy_calendar->current_options['enable_categories'] == 'true') {
-			foreach ($this->categories as $cat_details) {
-				if ($cat_details->category_id == $event->event_category) {
-					$style_popup = 'style="color:' . esc_html($cat_details->category_colour) . ';" ';
-					$cat_class = 'category_' . $cat_details->category_id;
+			if ( $event->terms ) { 
+				// use the color of the first category
+				$color = get_term_meta($event->terms[0]->term_id, 'color', true);
+				if ($color != '') {
+					$style_popup = 'style="color:' . esc_html($color) . ';" ';
+					$cat_class = 'category_' . $event->terms[0]->term_id;
 					if (($spiffy_calendar->current_options['category_bg_color'] === true) && ($type == 'grid')) {
-						$style_main = 'style="color: '. $spiffy_calendar->current_options['category_text_color'] . '; background:' . esc_html($cat_details->category_colour) . ';" ';
+						$style_main = 'style="color: '. $spiffy_calendar->current_options['category_text_color'] . '; background:' . esc_html($color) . ';" ';
 						$cat_class .= " category-bg";
 					} else {
 						$style_main = $style_popup;
 					}
 					if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
-						$cat_name_prefix = esc_html(stripslashes($cat_details->category_name)) . ' - ';
+						$cat_name_prefix = esc_html(stripslashes($event->terms[0]->name)) . ' - ';
 					}
-					break;
 				}
 			}
 		}
 
-		// Get time formatted
-		if ($event->event_all_day != "T") {
-			$time = date(get_option('time_format'), strtotime($event->event_time));
-		} else {
-			$time = "";
-		}
-		if ($event->event_end_time != "00:00:00") {
-			$end_time = date(get_option('time_format'), strtotime($event->event_end_time));
-		} else {
-			$end_time = "";
-		}
-
-		if ($event->event_image > 0) {
-			$image = wp_get_attachment_image_src( $event->event_image, 'thumbnail');
-		}
+		$image = get_the_post_thumbnail_url ($event->ID, 'thumbnail');
 		
 		// Gather link settings (event & location map)
 		$target = '';
 		$linkurl = '';
-		$linkmap = $event->event_link_location;
-		if ($event->event_link != '') {
+		$linkmap = $event->meta['_spiffy_event_link_location'][0];
+		if ($event->meta['_spiffy_event_link'][0] != '') {
 			// The event has a link
-			$linkurl = esc_url(stripslashes($event->event_link)); 
+			$linkurl = esc_url(stripslashes($event->meta['_spiffy_event_link'][0])); 
 			if ($spiffy_calendar->current_options['enable_new_window'] == 'true') {
 				$target = ' target="_blank"';
 			} 
 		}
 
 		// Construct the event header html
-		$details = '<span class="calnk ' . $cat_class . ' spiffy-eventid-' . $event->event_id . '"><span onclick="" class="calnk-link" ' . $style_main . '><span class="calnk-box">'; // span 1
-		if ($event->event_link != '') $details .= '<a href="' . $linkurl . '" ' . $style_main . $target . ' >';
-		$details .= '<span class="spiffy-title">' . $cat_name_prefix . esc_html(stripslashes($event->event_title)) . '</span>';
-		if ($event->event_link != '') $details .= '</a>';
+		$details = '<span class="calnk ' . $cat_class . ' spiffy-eventid-' . $event->ID . '"><span onclick="" class="calnk-link" ' . $style_main . '><span class="calnk-box">'; // span 1
+		if ($event->meta['_spiffy_event_link'][0] != '') $details .= '<a href="' . $linkurl . '" ' . $style_main . $target . ' >';
+		$details .= '<span class="spiffy-title">' . $cat_name_prefix . esc_html(stripslashes($event->post_title)) . '</span>';
+		if ($event->meta['_spiffy_event_link'][0] != '') $details .= '</a>';
+
+		$time_str = $this->format_times ( $event->meta['_spiffy_event_time'][0], $event->meta['_spiffy_event_end_time'][0] );
 		
 		if ($spiffy_calendar->current_options['display_detailed'] == 'true') {
-			if ($time != '') {
-				$details .= '<span class="calnk-time"><br />' . $time; // span 2
-				if ($event->event_end_time != "00:00:00") {
-					$details .= ' - ' . $end_time;
-				}
-				$details .= '</span>'; // end span 2
-			}
-			if ($event->event_image > 0) {
-				$details .= '<br /><img alt="" class="calnk-icon" src="' . $image[0] . '" />';
+			if ($time_str != "") {
+				$details .= '<span class="calnk-time"><br />'. $time_str . '</span>';
+			} 
+			if ($image) {
+				$details .= '<br /><img alt="" class="calnk-icon" src="' . $image . '" />';
 			}
 		}
 
 		// Add the popup html
 		$details .= '<span class="spiffy-popup" '.$style_popup.'>';  // span 3
-		if ($event->event_link != '') $details .= '<a href="' . $linkurl . '" ' . $target . ' >';
-		$details .= '<span class="event-title" ' . $style_popup . '>' . $cat_name_prefix . esc_html(stripslashes($event->event_title)) . '</span>';
+		if ($event->meta['_spiffy_event_link'][0] != '') $details .= '<a href="' . $linkurl . '" ' . $target . ' >';
+		$details .= '<span class="event-title" ' . $style_popup . '>' . $cat_name_prefix . esc_html(stripslashes($event->post_title)) . '</span>';
 		$details .= '<span class="event-title-break"></span>';
-		if ($event->event_all_day != "T") {
-			$details .= '<span class="event-title-time"><strong>'.__('Time','spiffy-calendar').':</strong> ' . $time;  // span 4
-			if ($event->event_end_time != "00:00:00") {
-				$details .= ' - ' . $end_time;
-			}
-			$details .= '</span><br />'; // end span 4
-		}
-		if ($event->event_image > 0) {
-			$details .= '<img src="' . $image[0] . '" alt="" />';
+		if ($time_str != "") {
+			$details .= '<span class="event-title-time"><strong>'.__('Time','spiffy-calendar').':</strong> ' . $time_str . '</span><br />';
+		} 
+		if ($image) {
+			$details .= '<img src="' . $image . '" alt="" />';
 		}
 		if ($spiffy_calendar->current_options['display_author'] == 'true') {
-			if ($event->event_author > 0) {
-				$e = get_userdata(stripslashes($event->event_author));
+			if ($event->post_author > 0) {
+				$e = get_userdata(stripslashes($event->post_author));
 				$details .= '<strong>'.__('Posted by', 'spiffy-calendar').':</strong> '.$e->display_name;
 			}
 		}
-		if ($spiffy_calendar->current_options['display_author'] == 'true' || $event->event_all_day != "T") {
+		if ($spiffy_calendar->current_options['display_author'] == 'true') {
 			$details .= '<span class="event-content-break"></span>';
 		}
 		
-		$details .= $this->format_desc($event->event_desc);
-		if ($event->event_link != '') $details .= '</a>';
-		$details .= $this->format_location($event->event_location, $linkmap);
+		$details .= $this->format_desc($event->post_content);
+		if ($event->meta['_spiffy_event_link'][0] != '') $details .= '</a>';
+		$details .= $this->format_location($event->meta['_spiffy_event_location'][0], $linkmap);
 		if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
 			$details .= $spiffycal_custom_fields->view($event);
 		}
@@ -638,10 +588,9 @@ class SPIFFYCAL_Views {
 	}
 
 	/*
-	** Used to draw multiple events in a responsive grid layout
+	** Draw multiple events in a responsive grid layout
 	*/
-	function draw_grid_events($events)
-	{
+	function draw_grid_events($events)	{
 		// We need to sort arrays of objects by time
 		usort($events, array($this, 'time_cmp'));
 		$output = '';
@@ -656,8 +605,7 @@ class SPIFFYCAL_Views {
 	/*
 	** Function to provide date of the nth day passed (eg. 2nd Sunday)
 	*/
-	function dt_of_sun($date,$instance,$day)
-	{
+	function dt_of_sun($date,$instance,$day) {
 		$plan = array();
 		$plan['Mon'] = 1;
 		$plan['Tue'] = 2;
@@ -681,32 +629,30 @@ class SPIFFYCAL_Views {
 	}
 
 	/*
-	** Draw the event edit form for front end or back end use
+	** Draw the event edit form for front end submit
 	**
 	** On frontend forms it omits: author and event_status, and blanks hide event fields
 	**
 	** $data = data to pre-populate in the form, from user input or from an event read from the db
-	** $frontend = true if the form is displayed on the front end
+	** $frontend = true if the form is displayed on the front end (no longer used on backend due to switch to custom posts)
 	** $args = array of options to enable/disable fields from the form
 	*/
 	function event_edit_form ($data, $frontend = false, $include_recurring = 'true', $include_images = 'true') {
 		// for backwards compatibility with bonus add-ons prior to version 3.22
-		return $this->event_edit_form_display ( $data, $frontend, array (
-					'include_images' => $include_images,
-					'include_recurring' => $include_recurring) );
+		return $this->event_edit_form_display ( $data, $frontend, array () );
 	}
 	
 	function event_edit_form_display ($data, $frontend = false, $args = array()) {
-		global $spiffy_calendar, $spiffy_edit_errors, $wpdb, $wp_version;
+		global $spiffy_calendar, $spiffy_edit_errors, $spiffycal_meta_boxes, $wpdb, $wp_version;
 
 		$defaults = array (
-				'include_category' => true,
-				'include_description' => true,
-				'include_images' => true,
-				'include_link' => true,
-				'include_location' => true,
-				'include_recurring' => true,
-				'include_times' => true,
+				'include_category' => 'true',
+				'include_description' => 'true',
+				'include_images' => 'true',
+				'include_link' => 'true',
+				'include_location' => 'true',
+				'include_recurring' => 'true',
+				'include_times' => 'true',
 			);
 			 
 		// Parse incoming $args into an array and merge it with $defaults
@@ -715,27 +661,26 @@ class SPIFFYCAL_Views {
 		$hidden = '';
 		ob_start( );
 ?>		
-<table class="spiffy-fe-submit" cellpadding="5" cellspacing="5">
+<div class="spiffy-fe-submit" cellpadding="5" cellspacing="5">
 
 
-<tr <?php if ( isset($spiffy_edit_errors['event_title']) ) echo 'class="error-message"';?>>
-<td><legend><?php echo esc_html($spiffy_calendar->current_options['title_label']); ?></legend></td>
-<td><input type="text" name="event_title" size="60" maxlength="60" required
+<div <?php if ( isset($spiffy_edit_errors['event_title']) ) echo 'class="error-message"';?>>
+<div><legend><?php echo ($spiffy_calendar->current_options['title_label'] == '') ? __( 'Event Title', 'spiffy-calendar' ) : esc_html($spiffy_calendar->current_options['title_label']); ?></legend></div>
+<div><input type="text" name="event_title" required
 	value="<?php if ( !empty($data) ) echo esc_html(stripslashes($data->event_title)); ?>" />
-  <span class="description spiffy-form-desc"><?php _e('Maximum 60 characters.','spiffy-calendar'); ?></span>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_title']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_title'].'</td></tr>'; ?>
+</div>
+</div>
+<?php if ( isset($spiffy_edit_errors['event_title']) ) echo '<div><div class="error-message" colspan="2">'.$spiffy_edit_errors['event_title'].'</div></div>'; ?>
 
 
 <?php if ($args['include_description'] == 'true') { ?>
 
-<tr class="spiffy-edit-description">
-<td class="spiffy-edit-label" style="vertical-align:top;"><legend><?php _e('Event Description','spiffy-calendar'); ?></legend></td>
-<td>
+<div class="spiffy-edit-description">
+<div class="spiffy-edit-label" style="vertical-align:top;"><legend><?php _e('Event Description','spiffy-calendar'); ?></legend></div>
+<div>
 <textarea class="spiffy-edit-data" name="event_desc" rows="5" cols="50"><?php if ( !empty($data) ) echo esc_textarea(stripslashes($data->event_desc)); ?>
-</textarea></td>
-</tr>
+</textarea></div>
+</div>
 
 <?php } else {
 $hidden .= '
@@ -743,258 +688,39 @@ $hidden .= '
 ';	
 } ?>
 
-<?php if ($args['include_location'] == 'true') { ?>
-
-<tr class="spiffy-edit-location">
-<td class="spiffy-edit-label" style="vertical-align:top;"><legend><?php _e('Event Location','spiffy-calendar'); ?></legend></td>
-<td>
-<textarea class="spiffy-edit-data" name="event_location" rows="5" cols="50"><?php if ( !empty($data) ) echo esc_textarea(stripslashes($data->event_location)); ?>
-</textarea><br />
-<input class="spiffy-edit-data2" type="checkbox" name="link_location" <?php if ( !empty($data) && ($data->event_link_location == 'T')) echo 'checked'; ?> /> <span class="spiffy-edit-description2"><?php _e('Include link to Google map','spiffy-calendar'); ?></span>
-</td>
-</tr>
-
-<?php } else {
-$hidden .= '
-<input type="hidden" name="event_location" value="" />
-';	
-} ?>
-
 <?php if ($args['include_category'] == 'true') { ?>
 
-<tr class="spiffy-edit-category" <?php if ( isset($spiffy_edit_errors['event_category']) ) echo 'class="error-message"';?>>
-<td class="spiffy-edit-label" ><legend><?php echo esc_html($spiffy_calendar->current_options['category_singular']); ?></legend></td>
-<td>	 <select class="spiffy-edit-data" name="event_category">
+<div class="spiffy-edit-category" <?php if ( isset($spiffy_edit_errors['event_category']) ) echo 'class="error-message"';?>>
+<div class="spiffy-edit-label" ><legend><?php echo esc_html($this->format_category( true )); ?></legend></div>
+<div>	 
  <?php
-		// Grab all the categories and list them
-		$sql = "SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_CATEGORIES_TABLE;
-		if ($spiffy_calendar->current_options['alphabetic_categories'] == 'true') $sql .= " ORDER BY category_name";
-		$cats = $wpdb->get_results($sql);
-		foreach($cats as $cat) {
-			 echo '<option value="'.$cat->category_id.'"';
-			 if (!empty($data)) {
-				if ($data->event_category == $cat->category_id) {
-					echo 'selected="selected"';
-				}
-			 }
-			 echo '>' . esc_html(stripslashes($cat->category_name)) . '</option>';
-		}
+		$cur_cat = (empty($data))? '' : $data->event_category;
+		wp_dropdown_categories (array (
+				'taxonomy' => 'spiffy_categories',
+				'hide_empty' => false,
+				'selected' => $cur_cat,
+				'orderby' => 'name',
+				'name' => 'event_category',
+				'class' => 'spiffy-edit-data',
+				'show_option_none' => __('Select a ', 'spiffy-calendar') . strtolower (esc_html($this->format_category( true )))
+				));
+?>
+</div>
+</div>
+<?php if ( isset($spiffy_edit_errors['event_category']) ) echo '<div><div class="error-message" colspan="2">'.$spiffy_edit_errors['event_category'].'</div></div>'; ?>
+
+<?php } else {
+$hidden .= '
+<input type="hidden" name="event_category" value="" />
+';	
+} ?>
+
+<?php	
+	// Output the meta boxes using the same code as custom post editor
+	$spiffycal_meta_boxes->meta_boxes_output (null, $data, $args); 
 ?>
 
-	</select>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_category']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_category'].'</td></tr>'; ?>
-
-<?php } else {
-$hidden .= '
-<input type="hidden" name="event_category" value="1" />
-';	
-} ?>
-
-<?php
-if (current_user_can( 'manage_options' ) && !$frontend) {
-	?>
-	<tr>
-	<td><legend><?php _e( 'Author', 'spiffy-calendar' ); ?></legend></td>
-	<td>
-	<?php
-		if (version_compare($wp_version, '4.5', '<')) {
-			$show = 'display_name';
-		} else {
-			$show = 'display_name_with_login';
-		}
-		wp_dropdown_users( array(
-			'name' => 'event_author',
-			'selected' => (empty($data) || !isset($data->event_author) || ($data->event_author == 0)) ? get_current_user_id() : $data->event_author,
-			'show' => $show,
-		) );
-	?>
-	</td>
-	</tr>
-	<?php
-} 
-
-
-if (!$frontend) { ?>
-<tr <?php if ( isset($spiffy_edit_errors['event_status']) ) echo 'class="error-message"';?>>
-<td><legend><?php _e('Status', 'spiffy-calendar'); ?></legend></td>
-<td>
- <?php
-		$selected_publish = $selected_draft = $selected_review = '';
-		if (isset($data)) {
-			if ($data->event_status == "P") {
-				$selected_publish = 'selected';
-			} else if ($data->event_status == "D") {
-				$selected_draft = 'selected';
-			} else if ($data->event_status == "R") {
-				$selected_review = 'selected';
-			}
-		}
-	?>
-	<select id="spiffy-event-status" name="event_status" class="input">
-		<option <?php echo $selected_publish; ?> value="P"><?php _e('Publish', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_draft; ?> value="D"><?php _e('Draft', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_review; ?> value="R"><?php _e('Pending review', 'spiffy-calendar') ?></option>
-	</select>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_status']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_status'].'</td></tr>'; ?>
-<?php } ?>
-
-<?php if ($args['include_link'] == 'true') { ?>
-
-<tr class="spiffy-edit-link" <?php if ( isset($spiffy_edit_errors['event_link']) ) echo 'class="error-message"';?>>
-<td class="spiffy-edit-label" ><legend><?php _e('Event Link','spiffy-calendar'); ?></legend></td>
-<td class="spiffy-edit-data">
-	<input type="text" name="event_link" size="40" value="<?php if ( !empty($data) ) echo esc_url(stripslashes($data->event_link)); ?>" />&nbsp;
-	<span class="spiffy-form-desc description"><?php _e('Optional, set blank if not required.','spiffy-calendar'); ?></span>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_link']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_link'].'</td></tr>'; ?>
-
-<?php } else {
-$hidden .= '
-<input type="hidden" name="event_link" value="" />
-';	
-} ?>
-
-<tr <?php if ( isset($spiffy_edit_errors['event_begin']) ) echo 'class="error-message"';?>>
-<td><legend><?php _e('Start Date','spiffy-calendar'); ?></legend></td>
-<td>
-	<input type="text" id="event_begin" name="event_begin" class="spiffy-date-field" size="12"
-	value="<?php 
-		if ( !empty($data) ) {
-			echo esc_html($data->event_begin);
-		} else {
-			echo date("Y-m-d",current_time('timestamp'));
-		} 
-	?>" />
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_begin']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_begin'].'</td></tr>'; ?>
-
-
-<tr <?php if ( isset($spiffy_edit_errors['event_end']) ) echo 'class="error-message"';?>>
-<td><legend><?php _e('End Date','spiffy-calendar'); ?></legend></td>
-<td><input type="text" id="event_end" name="event_end" class="spiffy-date-field" size="12"
-	value="<?php 
-		if ( !empty($data) ) {
-			echo esc_html($data->event_end);
-		} else {
-			echo date("Y-m-d",current_time('timestamp'));
-		} 
-	?>" />
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_end']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_end'].'</td></tr>'; ?>
-
-<?php if ($args['include_times'] == 'true') { ?>
-
-<tr <?php if ( isset($spiffy_edit_errors['event_time']) ) echo 'class="error-message"';?>>
-<td><legend><?php _e('Start Time (hh:mm)','spiffy-calendar'); ?></legend></td>
-<td>
-	<input type="text" id="event_time" name="event_time" size=12
-	value="<?php 
-	if ( !empty($data) ) {
-		if ( isset($data->event_all_day) && ($data->event_all_day == "T")) {
-			echo '';
-		} else {
-			echo date(get_option('time_format'),strtotime($data->event_time));
-		}
-	} else {
-		//echo date("a:i a",current_time('timestamp')); //defaulting to current time is not helpful
-	}
-	?>" />&nbsp;<span class="spiffy-form-desc description"><?php _e('Optional, set blank if not required. Ignored for "Hide Events".','spiffy-calendar'); ?></span>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_time']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_time'].'</td></tr>'; ?>
-
-
-<tr <?php if ( isset($spiffy_edit_errors['event_end_time']) ) echo 'class="error-message"';?>>
-<td><legend><?php _e('End Time (hh:mm)','spiffy-calendar'); ?></legend></td>
-<td>
-	<input type="text" id="event_end_time" name="event_end_time" size=12
-	value="<?php 
-	if ( !empty($data) ) {
-		if ($data->event_end_time == "00:00:00") {
-			echo '';
-		} else {
-			echo date(get_option('time_format'),strtotime($data->event_end_time));
-		}
-	} 
-	?>" />&nbsp;<span class="spiffy-form-desc description"><?php _e('Optional, set blank if not required. Ignored for "Hide Events".','spiffy-calendar'); ?></span>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_end_time']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_end_time'].'</td></tr>'; ?>
-
-<?php } else {
-$hidden .= '
-<input type="hidden" name="event_begin_time" value="" />
-<input type="hidden" name="event_end_time" value="" />
-';	
-} ?>
-
 <?php if ($args['include_recurring'] == 'true') { ?>
-<tr>
-<td style="vertical-align:top;"><legend><?php _e('Recurring Events','spiffy-calendar'); ?></legend></td>
-<td>
-	<?php
-	if (isset($data)) {
-		if ($data->event_repeats != NULL) {
-			$repeats = $data->event_repeats;
-		} else {
-			$repeats = 0;
-		}
-	} else {
-		$repeats = 0;
-	}
-
-	$selected_s = '';
-	$selected_w = '';
-	$selected_b = '';
-	$selected_m = '';
-	$selected_y = '';
-	$selected_u = '';
-	$selected_d = '';
-	$recur_multiplier = 1;
-	if (isset($data)) {
-		if ($data->event_recur == "S") {
-			$selected_s = 'selected';
-		} else if ($data->event_recur == "W") {
-			$selected_w = 'selected';
-		} else if ($data->event_recur == "M") {
-			$selected_m = 'selected';
-		} else if ($data->event_recur == "Y") {
-			$selected_y = 'selected';
-		} else if ($data->event_recur == "U") {
-			$selected_u = 'selected';
-		} else if ($data->event_recur == "D") {
-			$selected_d = 'selected';
-		}
-		$recur_multiplier = $data->event_recur_multiplier;
-	}
-	?>
-	<span  <?php if ( isset($spiffy_edit_errors['event_recur']) ) echo 'class="error-message"';?>><?php _e('Interval', 'spiffy-calendar');?>:</span>&nbsp;
-	<select id="spiffy-event-recur" name="event_recur" class="input">
-		<option <?php echo $selected_s; ?> value="S"><?php _e('None', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_w; ?> value="W"><?php _e('Weekly', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_m; ?> value="M"><?php _e('Months (date)', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_u; ?> value="U"><?php _e('Months (day)', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_y; ?> value="Y"><?php _e('Years', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_d; ?> value="D"><?php _e('Custom Days', 'spiffy-calendar') ?></option>						
-	</select>&nbsp;<span id="spiffy-custom-days" <?php if ( isset($spiffy_edit_errors['event_recur_multiplier']) ) echo 'class="error-message"';?>>
-	<?php _e('Repeat every','spiffy-calendar'); ?>
-	&nbsp;<input id="spiffy-custom-days-input" type="number" step="1" min="1" max="199" name="event_recur_multiplier" value="<?php echo esc_html($recur_multiplier); ?>" />
-	&nbsp;<?php _e('days', 'spiffy-calendar'); ?></span><br />
-	<span <?php if ( isset($spiffy_edit_errors['event_repeats']) ) echo 'class="error-message"';?> ><?php _e('Repeats','spiffy-calendar'); ?> 
-	&nbsp;<input type="number" name="event_repeats" size="3" min="0" value="<?php echo esc_html($repeats); ?>" />&nbsp;<?php echo __('times','spiffy-calendar'); ?>.</span>
-	<p class="spiffy-form-desc description"><?php _e('Entering 0 means forever. Where the recurrence interval is left at none, the event will not recur.','spiffy-calendar'); ?></p>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_recur']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_recur'].'</td></tr>'; ?>
-<?php if ( isset($spiffy_edit_errors['event_recur_multiplier']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_recur_multiplier'].'</td></tr>'; ?>
-<?php if ( isset($spiffy_edit_errors['event_repeats']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_repeats'].'</td></tr>'; ?>
 <?php } else {
 	$hidden .= '
 <input type="hidden" name="event_recur" value="S" />
@@ -1004,72 +730,10 @@ $hidden .= '
 ?>
 
 
-<?php if (!$frontend) { ?>
-<tr <?php if ( isset($spiffy_edit_errors['event_hide_events']) ) echo 'class="error-message"';?>>
-<td style="vertical-align:top;"><legend><?php _e('Hide Events','spiffy-calendar'); ?></legend></td>
-<td> 
-<?php
-	if (isset($data)) {
-		if ($data->event_hide_events != NULL) {
-			$hide_events = $data->event_hide_events;
-		} else {
-			$hide_events = 'F';
-		}
-	} else {
-		$hide_events = 'F';
-	}
+<?php if (!$frontend) { ?>  
+<?php } 
 
-	$selected_he_t = '';
-	$selected_he_f = '';
-	if (isset($data)) {
-		if ($data->event_hide_events == 'T') {
-			$selected_he_t = 'selected="selected"';
-		} else if ($data->event_hide_events == 'F') {
-			$selected_he_f = 'selected="selected"';
-		}
-	}
-	if (isset($data)) {
-		if ($data->event_show_title != NULL) {
-			$show_title = $data->event_show_title;
-		} else {
-			$show_title = 'F';
-		}
-	} else {
-		$show_title = 'F';
-	}
-
-	$selected_st_t = '';
-	$selected_st_f = '';
-	if (isset($data)) {
-		if ($data->event_show_title == 'T') {
-			$selected_st_t = 'selected="selected"';
-		} else if ($data->event_show_title == 'F') {
-			$selected_st_f = 'selected="selected"';
-		}
-	}
-?>
-	<select name="event_hide_events" class="input">
-		<option <?php echo $selected_he_f; ?> value='F'><?php _e('False', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_he_t; ?> value='T'><?php _e('True', 'spiffy-calendar') ?></option>
-	</select> 
-	<span class="spiffy-form-desc description"><?php _e('Entering True means other events of this category will be hidden for the specifed day(s).','spiffy-calendar'); ?></span>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_hide_events']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_hide_events'].'</td></tr>'; ?>
-
-
-<tr <?php if ( isset($spiffy_edit_errors['event_show_title']) ) echo 'class="error-message"';?>>
-<td style="vertical-align:top;"><legend>&nbsp;</legend></td>
-<td><?php _e('Show Title','spiffy-calendar'); ?>&nbsp;
-<select name="event_show_title" class="input">
-		<option <?php echo $selected_st_f; ?> value='F'><?php _e('False', 'spiffy-calendar') ?></option>
-		<option <?php echo $selected_st_t; ?> value='T'><?php _e('True', 'spiffy-calendar') ?></option>
-	</select>
-	<span class="spiffy-form-desc description"><?php _e('Entering True means the title of this event will be displayed. This is only used if Hide Events is True.','spiffy-calendar'); ?></span>
-</td>
-</tr>
-<?php if ( isset($spiffy_edit_errors['event_show_title']) ) echo '<tr><td class="error-message" colspan="2">'.$spiffy_edit_errors['event_show_title'].'</td></tr>'; ?>
-<?php } else { 
+else { 
 	$hidden .= '
 <input type="hidden" name="event_hide_events" value="F" />
 <input type="hidden" name="event_show_title" value="T" />
@@ -1083,11 +747,6 @@ $hidden .= '
 	$image_url = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
 	$image_id = "";
 	
-	if ( !empty($data) && isset($data->event_remove_image) && ($data->event_remove_image == 'true') ) {
-		$data->event_image = ''; // unlink image was requested so go ahead and clear the selection		
-		$data->event_remove_image = 'false';
-	}
-
 	if ( !empty($data) ) {
 		if ($data->event_image > 0) {
 			$image_id = $data->event_image;
@@ -1113,14 +772,14 @@ $hidden .= '
 		}
 	}
 	?>
-<tr>
-<td><legend><?php _e('Image','spiffy-calendar'); ?></legend></td>
-<td>
+<div>
+<div><legend><?php _e('Image','spiffy-calendar'); ?></legend></div>
+<div>
 	<?php echo $image_input; ?>
 	<img class="spiffy-image-view" style="max-width: 200px; height: auto;" src="<?php echo $image_url; ?>" />
 	&nbsp;<input <?php echo $checked; ?> type="checkbox" name="event_remove_image" value="true"> <?php _e('Remove image selection','spiffy-calendar'); ?>
-</td>
-</tr>
+</div>
+</div>
 <?php } else {
 	$hidden .= '
 <input type="hidden" name="event_image" value="" />
@@ -1128,13 +787,13 @@ $hidden .= '
 }
 ?>
 <?php 
-/* Add custom fields */
-global $spiffycal_bonus_settings;
-if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_settings, 'custom_fields_edit') ) {
-	echo $spiffycal_bonus_settings->custom_fields_edit($data);
-}
+/* Add custom fields - done by add_meta_boxes */
+// global $spiffycal_bonus_settings;
+// if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_settings, 'custom_fields_edit') ) {
+	// echo $spiffycal_bonus_settings->custom_fields_edit($data);
+// }
 ?>
-</table>
+</div>
 <?php		
 		$output = ob_get_clean( );
 		return $output . $hidden;
@@ -1153,8 +812,8 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 				
 		// Check that the target is beyond the start date of the event and before the end of the last recurrence
 		if ($event_begin_timestamp <= $date_timestamp) {
-			if ( ($event->event_repeats == 0) ||			// event recurs infinitely OR
-				 ($event_end_timestamp + $num_days*($event->event_repeats)*(24*60*60) >= $date_timestamp) // ensure the target day falls before the end of the last recurrence
+			if ( ($event->meta['_spiffy_event_repeats'][0] == 0) ||			// event recurs infinitely OR
+				 ($event_end_timestamp + $num_days*($event->meta['_spiffy_event_repeats'][0])*(24*60*60) >= $date_timestamp) // ensure the target day falls before the end of the last recurrence
 				) {
 					
 				// Calculate number of recurrences from first occurrence to target date
@@ -1189,22 +848,22 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 		if (!empty($events)) {
 			foreach($events as $event) {
 				// get timestamp event times
-				$event_begin_timestamp = strtotime($event->event_begin);
-				$event_end_timestamp = strtotime($event->event_end);
-				
+				$event_begin_timestamp = strtotime($event->meta['_spiffy_event_begin'][0]);
+				$event_end_timestamp = strtotime($event->meta['_spiffy_event_end'][0]);
+
 				// Save event start timestamp to use in displays. This may be overwritten below if the event is recurring.
 				$event->begin_timestamp = $event_begin_timestamp;
 
-				if ($event->type == 'Normal') {
+				if ($event->meta['_spiffy_event_recur'][0] == 'S') {
 					if ( ($event_begin_timestamp <= $date_timestamp) && ($event_end_timestamp >= $date_timestamp)) {
 						array_push($arr_events, $event);
 					}
- 				} else if ($event->type == 'Yearly') {
+ 				} else if ($event->meta['_spiffy_event_recur'][0] == 'Y') {
 					// Note - we can't use the basic recurrence check here due to leap days
 					
 					// we know the year is good, check if the event recurrence ends before the target date
-					if ($event->event_repeats != 0) {
-						$final_recurrence_end_timestamp = strtotime('+'.strval($event->event_repeats).' years', $event_end_timestamp);
+					if ($event->meta['_spiffy_event_repeats'][0] != 0) {
+						$final_recurrence_end_timestamp = strtotime('+'.strval($event->meta['_spiffy_event_repeats'][0]).' years', $event_end_timestamp);
 						if ($final_recurrence_end_timestamp < $date_timestamp) {
 							continue; // the final recurrence ends before the target date
 						}
@@ -1231,12 +890,12 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 							array_push($arr_events, $event);
 						}
 					}
- 				} else if ($event->type == 'Monthly') {
+ 				} else if ($event->meta['_spiffy_event_recur'][0] == 'M') {
 					// Note - we can't use the basic recurrence check here due to month length variations
 					
 					// we know the year is good, check if the event recurrence ends before the target date
-					if ($event->event_repeats != 0) {
-						$final_recurrence_end_timestamp = strtotime('+'.strval($event->event_repeats).' months', $event_end_timestamp);
+					if ($event->meta['_spiffy_event_repeats'][0] != 0) {
+						$final_recurrence_end_timestamp = strtotime('+'.strval($event->meta['_spiffy_event_repeats'][0]).' months', $event_end_timestamp);
 						if ($final_recurrence_end_timestamp < $date_timestamp) {
 							continue; // the final recurrence ends before the target date
 						}
@@ -1257,16 +916,16 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 							array_push($arr_events, $event);
 	 					}
 				 	} else if (($month_begin < $month_end) && ($event_begin_timestamp <= $date_timestamp)) {
-						if ( ($event->event_begin <= date('Y-m-d',$date_timestamp)) 
+						if ( ($event->meta['_spiffy_event_begin'][0] <= date('Y-m-d',$date_timestamp)) 
 							&& (date('d',$event_begin_timestamp) <= date('d',$date_timestamp) 
 							|| date('d',$event_end_timestamp) >= date('d',$date_timestamp)) ) {
 							array_push($arr_events, $event);
 	 					}
 				 	}
- 				} else if ($event->type == 'MonthSun') {
+ 				} else if ($event->meta['_spiffy_event_recur'][0] == 'U') {
 					// we know the year is good, check if the event recurrence ends before the target date
-					if ($event->event_repeats != 0) {
-						$final_recurrence_end_timestamp = strtotime('+'.strval($event->event_repeats).' months', $event_end_timestamp);
+					if ($event->meta['_spiffy_event_repeats'][0] != 0) {
+						$final_recurrence_end_timestamp = strtotime('+'.strval($event->meta['_spiffy_event_repeats'][0]).' months', $event_end_timestamp);
 						$final_recurrence_end_timestamp += 24*60*60*7;	// add one week since this match is by day of week rather than number
 						if ($final_recurrence_end_timestamp < $date_timestamp) {
 							continue; // the final recurrence ends before the target date
@@ -1280,9 +939,9 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 					// Setup some variables and get some values
 					$dow = date('w',$event_begin_timestamp);
 					if ($dow == 0) { $dow = 7; }
-					$start_ent_this = $this->dt_of_sun($date,$this->np_of_day($event->event_begin),$dow);
+					$start_ent_this = $this->dt_of_sun($date,$this->np_of_day($event->meta['_spiffy_event_begin'][0]),$dow);
 					$event->begin_timestamp = strtotime($start_ent_this); // Store this event occurrence start date timestamp
-					$start_ent_prev = $this->dt_of_sun(date('Y-m-d',strtotime($date.'-1 month')),$this->np_of_day($event->event_begin),$dow);
+					$start_ent_prev = $this->dt_of_sun(date('Y-m-d',strtotime($date.'-1 month')),$this->np_of_day($event->meta['_spiffy_event_begin'][0]),$dow);
 					$len_ent = $event_end_timestamp-$event_begin_timestamp;
 
 					// The grunt work
@@ -1314,18 +973,18 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 							array_push($arr_events, $event);
 	 					}
 				 	}
- 				} else if ($event->type == 'Weekly') {
+ 				} else if ($event->meta['_spiffy_event_recur'][0] == 'W') {
 					// Perform basic recurrence test for 7 days
 					if ($this->event_will_happen($date_timestamp, $event, 7, $event_begin_timestamp, $event_end_timestamp)) {
 						$num_recurs_from_begin = floor(floor(($date_timestamp - $event_begin_timestamp) / (60 * 60 * 24)) / 7);
 						$event->begin_timestamp = $event_begin_timestamp + ($num_recurs_from_begin * 7 * 60 * 60 * 24);
 						array_push ($arr_events, $event);
 					}
- 				} else if ($event->type == 'Daily') {
+ 				} else if ($event->meta['_spiffy_event_recur'][0] == 'D') {
 					// Perform basic recurrence test for "event_repeats" days
-					if ($this->event_will_happen($date_timestamp, $event, $event->event_recur_multiplier, $event_begin_timestamp, $event_end_timestamp)) {
-						$num_recurs_from_begin = floor(floor(($date_timestamp - $event_begin_timestamp) / (60 * 60 * 24)) / $event->event_recur_multiplier);
-						$event->begin_timestamp = $event_begin_timestamp + ($num_recurs_from_begin * $event->event_recur_multiplier * 60 * 60 * 24);
+					if ($this->event_will_happen($date_timestamp, $event, $event->meta['_spiffy_event_recur_multiplier'][0], $event_begin_timestamp, $event_end_timestamp)) {
+						$num_recurs_from_begin = floor(floor(($date_timestamp - $event_begin_timestamp) / (60 * 60 * 24)) / $event->meta['_spiffy_event_recur_multiplier'][0]);
+						$event->begin_timestamp = $event_begin_timestamp + ($num_recurs_from_begin * $event->meta['_spiffy_event_recur_multiplier'][0] * 60 * 60 * 24);
 						array_push ($arr_events, $event);
 					}
 				}
@@ -1335,14 +994,20 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 		$hide_event_count = 0;
 		foreach($arr_events as $arr_event) {
 			// count the number of hide events
-			if ($arr_event->event_hide_events == 'T') { $hide_event_count++; }		
+			if ($arr_event->meta['_spiffy_event_hide_events'][0] == 'T') { 
+				$hide_event_count++; 
+			} 
 		}
 		if ($hide_event_count) { // hide_events event found for this date.
+		
 			// separate "hide events" from normal events
 			$hide_events = array();
 			$normal_events = array();
+			
 			foreach($arr_events as $arr_event) {
-				if ($arr_event->event_hide_events == 'T') {
+				$arr_event->term_ids = wp_list_pluck($arr_event->terms, 'term_id');
+				if (!$arr_event->term_ids) $arr_event->term_ids = array();
+				if ($arr_event->meta['_spiffy_event_hide_events'][0] == 'T') {
 					array_push($hide_events, $arr_event);
 				} else {
 					array_push($normal_events, $arr_event);
@@ -1351,13 +1016,14 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 			// use the show_title flag in the array (not the database) to
 			// select which events to show after filtering on hide_events
 			foreach($normal_events as $normal_event) {
-				$normal_event->event_show_title = 'T';   // initialize
+				$normal_event->meta['_spiffy_event_show_title'][0] = 'T';   // initialize
 			}
 			foreach($normal_events as $normal_event) {
 				foreach($hide_events as $hide_event) {
-					if ($normal_event->event_category == $hide_event->event_category) {
-						// normal event has same category as hide_event: don't show it
-						$normal_event->event_show_title = 'F';
+					$result = array_intersect($hide_event->term_ids, $normal_event->term_ids);
+					if ($result) {
+						// normal event has overlapping category as hide_event: don't show it
+						$normal_event->meta['_spiffy_event_show_title'][0] = 'F';
 						break;   // break out of inner loop
 					}
 				}
@@ -1366,11 +1032,11 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 			$shown_events = array();
 			// show hidden events first on calendar
 			foreach($hide_events as $hide_event) {
-				if ($hide_event->event_show_title == 'T') {array_push($shown_events, $hide_event);}
+				if ($hide_event->meta['_spiffy_event_show_title'][0] == 'T') {array_push($shown_events, $hide_event);}
 			}
 			// then show normal events
 			foreach($normal_events as $normal_event) {
-				if ($normal_event->event_show_title == 'T') {array_push($shown_events, $normal_event);}
+				if ($normal_event->meta['_spiffy_event_show_title'][0] == 'T') {array_push($shown_events, $normal_event);}
 			}
 			return $shown_events;			
 		}
@@ -1378,10 +1044,43 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 	}
 
 	/*
+	** Category prompt
+	*/
+	function format_category ( $singular = true ) {
+		global $spiffy_calendar;
+		
+		if ( $singular ) {
+			if ( $spiffy_calendar->current_options['category_singular'] == '' ) {
+				return __( 'Category', 'spiffy-calendar' );
+			}
+			return $spiffy_calendar->current_options['category_singular'];
+		}
+		if ( $spiffy_calendar->current_options['category_plural'] == '' ) {
+			return __( 'Categories', 'spiffy-calendar' );
+		}
+		return $spiffy_calendar->current_options['category_plural'];
+	}
+
+	/*
+	** Date fields display
+	*/
+	function format_date ($event_begin, $event_end) {
+		if ($event_begin != $event_end) {
+			$output = date_i18n('M j',  strtotime($event_begin)) . ' - ';
+			$output .= date_i18n('M j',  strtotime($event_end));
+		} else {
+			$output = date_i18n(get_option('date_format'), strtotime($event_begin));
+		}
+		return $output;
+	}
+
+	/*
 	**  Sanitize and format the raw description ready for output
 	*/
 	function format_desc ($desc) {
-		$data = apply_filters('spiffy_calendar_desc', wpautop(esc_textarea(stripslashes($desc))));
+		// return apply_filters( 'the_content', $desc );
+		// $data = apply_filters('spiffy_calendar_desc', wpautop(esc_textarea(stripslashes($desc))));
+		$data = apply_filters('spiffy_calendar_desc', wpautop(wp_kses_post(stripslashes($desc))));
 		return str_replace(array('<p>', '</p>'), array('<span class="ca-desc-p">', '</span>'), $data);
 	}
 	
@@ -1392,19 +1091,19 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 
 		// Set up default timestamp if event was pulled directly from db instead of through usual grab_events/filter_events process
 		if (!isset($event->begin_timestamp)) {
-			$event->begin_timestamp = strtotime($event->event_begin);
+			$event->begin_timestamp = strtotime($event->meta['_spiffy_event_begin'][0]);
 		}
 		
-		$end_timestamp = $event->begin_timestamp + strtotime($event->event_end) - strtotime($event->event_begin);
+		$end_timestamp = $event->begin_timestamp + strtotime($event->meta['_spiffy_event_end'][0]) - strtotime($event->meta['_spiffy_event_begin'][0]);
 
 		
-		if ($event->event_all_day == 'T') {
+		if ( ($event->meta['_spiffy_event_time'][0] == '') && ($event->meta['_spiffy_event_end_time'][0] == '') ){
 			// Google end date must be incremented by one day
 			$end_all_day = strtotime('+1 day', $end_timestamp);
 			$dates = date_i18n('Ymd', $event->begin_timestamp) . '/' . date_i18n('Ymd', $end_all_day);
 		} else {
-			$begin_hour = date( 'His',strtotime($event->event_time) );
-			$end_hour = date( 'His',strtotime($event->event_end_time) );
+			$begin_hour = date( 'His',strtotime($event->meta['_spiffy_event_time'][0]) );
+			$end_hour = date( 'His',strtotime($event->meta['_spiffy_event_end_time'][0]) );
 			$dates = date_i18n('Ymd', $event->begin_timestamp) . 'T' . $begin_hour . '/' . date_i18n('Ymd', $end_timestamp) . 'T' . $end_hour;
 		}
 		$data = sprintf('<a class="spiffy-google-calendar-link" href="https://www.google.com/calendar/render?
@@ -1415,10 +1114,10 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 								&location=%s
 								&trp=false"
 								target="_blank" rel="nofollow">+ Google calendar</a>',
-								rawurlencode(sanitize_text_field(stripslashes($event->event_title))),
+								rawurlencode(sanitize_text_field(stripslashes($event->post_title))),
 								$dates,
-								rawurlencode(sanitize_text_field(stripslashes($event->event_desc))),
-								rawurlencode(esc_textarea(stripslashes($event->event_location)))
+								rawurlencode(sanitize_text_field(stripslashes($event->post_content))),
+								rawurlencode(esc_textarea(stripslashes($event->meta['_spiffy_event_location'][0])))
 						);
 		return $data;		
 	}
@@ -1439,21 +1138,64 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 		}
 		return str_replace(array('<p>', '</p>'), array('<span class="ca-location-p">', '</span>'), $data);
 	}
+
+	/*
+	** More details prompt
+	*/
+	function format_more_details () {
+		global $spiffy_calendar;
+		
+		if ( $spiffy_calendar->current_options['more_details'] == '' ) {
+			return __( 'More details', 'spiffy-calendar' ) . ' &raquo;';
+		}
+		return $spiffy_calendar->current_options['more_details'];
+	}
 	
 	/*
-	** Read the categories into memory once when drawing events
+	** Recurrence display
 	*/
-	function get_all_categories() 
-	{
-		global $wpdb, $spiffy_calendar;
-		
-		if (count($this->categories) > 0) return; // only do this once
+	function format_recur ( $event_recur, $event_repeats, $event_recur_multiplier ) {
+		$output = '';
+		if ($event_recur != 'S') {
+			$output .= '<p class="spiffy-recurs">' . __('Repeats','spiffy-calendar') . ' ';
+			if ($event_recur == 'W') { $output .= __('weekly','spiffy-calendar'); }
+			else if ($event_recur == 'M') { $output .= __('monthly (date)','spiffy-calendar'); }
+			else if ($event_recur == 'U') { $output .= __('monthly (day)','spiffy-calendar'); }
+			else if ($event_recur == 'Y') { $output .= __('yearly','spiffy-calendar'); }
+			else if ($event_recur == 'D') { $output .= __('every','spiffy-calendar') . ' ' . $event_recur_multiplier . ' ' . __('days','spiffy-calendar'); }
+			
+			if ($event_repeats == 0) { $output .= ' ' . __('forever','spiffy-calendar'); }
+			else if ($event_repeats > 0) { $output .= ' ' .  $event_repeats . ' ' .__('times','spiffy-calendar'); }
 
-		$sql = "SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_CATEGORIES_TABLE;
-		if ($spiffy_calendar->current_options['alphabetic_categories'] == 'true') $sql .= ' ORDER BY category_name ASC';
-		$this->categories = $wpdb->get_results($sql);
+			$output .= '</p>';
+		}
+		return $output;
 	}
+		
+	/*
+	** Format start time to end time
+	**
+	** $start = start time string
+	** $end = end time string
+	*/
+	function format_times ( $start, $end ) {
+		$start_time = ($start == "")? '' : date(get_option('time_format'), strtotime($start));
+		$end_time = ($end == "") ? '' : $end_time = date(get_option('time_format'), strtotime($end));
 
+		if ($start_time != "") {
+			$output = $start_time;
+			if ($end_time != "") {
+				$output .= ' - ' . $end_time;
+			}
+		} else if ($end_time != "") {
+			$output = __( 'Until', 'spiffy-calendar') . ' ' . $end_time;
+		} else {
+			return '';
+		}
+		
+		return $output;		
+	}
+	
 	/*
 	** Determine the date requested for the current calendar display from the querystring, return as array (0=>year, 1=>month, 2=>day)
 	*/
@@ -1540,68 +1282,66 @@ if ( $spiffy_calendar->bonus_addons_active() && method_exists ($spiffycal_bonus_
 	/*
 	**	Grab all events for the requested date range from the DB
 	**
-	**  The retrieved events consist of specific scheduled events within the range, and all recurring events that
-	**  fall within the same year(s)
+	**  The retrieved events consist of specific scheduled events within the range, and all recurring events 
 	*/
 	function grab_events($y1,$m1,$d1,$y2,$m2,$d2,$cat_list = '') {
-		global $wpdb, $spiffy_calendar, $spiffycal_custom_fields;
+		global $wpdb, $spiffy_calendar, $spiffycal_custom_fields, $spiffycal_meta_boxes;
 
 		// Get the date format right
-		$date1 = $y1 . '-' . $m1 . '-' . $d1;
-		$date2 = $y2 . '-' . $m2 . '-' . $d2;
+		$date1 = sprintf("%4d-%02d-%02d", $y1, $m1, $d1);
+		$date2 = sprintf("%4d-%02d-%02d", $y2, $m2, $d2);
 		//echo 'Grabbing range '.$date1.' to '.$date2.'<br />';
 		
 		$date1_timestamp = strtotime($date1);
 		$date2_timestamp = strtotime($date2);
 
-		// Format the category list
-		$pattern = '/^\d+(?:,\d+)*$/';
-		if ($cat_list == '') { 
-			$cat_sql = ''; 
-		} else if ( preg_match($pattern, $cat_list) ) {
-			$cat_sql = 'AND event_category in ('.$cat_list.')';
-		} else {
-			$cat_sql = '';
-		}
-				 
-		// The collated SQL code
-		$sql = "SELECT a.*,'Normal' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS a WHERE a.event_status = 'P' AND a.event_begin <= '$date2' AND a.event_end >= '$date1' AND a.event_recur = 'S' ".$cat_sql." 
-UNION ALL 
-SELECT b.*,'Yearly' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS b WHERE b.event_status = 'P' AND b.event_recur = 'Y' AND b.event_begin <= '$date2' AND b.event_repeats = 0 ".$cat_sql." 
-UNION ALL 
-SELECT c.*,'Yearly' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS c WHERE c.event_status = 'P' AND c.event_recur = 'Y' AND c.event_begin <= '$date2' AND c.event_repeats != 0 AND (EXTRACT(YEAR FROM '$date1')-EXTRACT(YEAR FROM c.event_end)) <= c.event_repeats ".$cat_sql." 
-UNION ALL 
-SELECT d.*,'Monthly' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS d WHERE d.event_status = 'P' AND d.event_recur = 'M' AND d.event_begin <= '$date2' AND d.event_repeats = 0 ".$cat_sql." 
-UNION ALL
-SELECT e.*,'Monthly' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS e WHERE e.event_status = 'P' AND e.event_recur = 'M' AND e.event_begin <= '$date2' AND e.event_repeats != 0 AND (PERIOD_DIFF(EXTRACT(YEAR_MONTH FROM '$date1'),EXTRACT(YEAR_MONTH FROM e.event_end))) <= e.event_repeats ".$cat_sql." 
-UNION ALL
-SELECT f.*,'MonthSun' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS f WHERE f.event_status = 'P' AND f.event_recur = 'U' AND f.event_begin <= '$date2'  AND f.event_repeats = 0 ".$cat_sql." 
-UNION ALL
-SELECT g.*,'MonthSun' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS g WHERE g.event_status = 'P' AND g.event_recur = 'U' AND g.event_begin <= '$date2' AND g.event_repeats != 0 AND (PERIOD_DIFF(EXTRACT(YEAR_MONTH FROM '$date1'),EXTRACT(YEAR_MONTH FROM g.event_end))) <= g.event_repeats ".$cat_sql." 
-UNION ALL
-SELECT h.*,'Weekly' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS h WHERE h.event_status = 'P' AND h.event_recur = 'W' AND '$date2' >= h.event_begin AND h.event_repeats = 0 ".$cat_sql." 
-UNION ALL
-SELECT i.*,'Weekly' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS i WHERE i.event_status = 'P' AND i.event_recur = 'W' AND '$date2' >= i.event_begin AND i.event_repeats != 0 AND (i.event_repeats*7) >= (TO_DAYS('$date1') - TO_DAYS(i.event_end)) ".$cat_sql." 
-UNION ALL
-SELECT j.*,'Daily' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS j WHERE j.event_status = 'P' AND j.event_recur = 'D' AND '$date2' >= j.event_begin AND j.event_repeats = 0 ".$cat_sql."
-UNION ALL
-SELECT k.*,'Daily' AS type FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " AS k WHERE k.event_status = 'P' AND k.event_recur = 'D' AND '$date2' >= k.event_begin AND k.event_repeats != 0 AND (k.event_repeats*k.event_recur_multiplier) >= (TO_DAYS('$date1') - TO_DAYS(k.event_end)) ".$cat_sql."
-ORDER BY event_id";
-
 		// NOTE - we do not allow infinite custom days
 		
-		//print_r ($sql);
+		// Get all posts, with category filter if specified
+		$args = array(
+					'post_type' => 'spiffy_event',
+					'numberposts' => -1,
+					'post_status' => 'publish',
+					);
+
+		$pattern = '/^\d+(?:,\d+)*$/';
+		if (($cat_list != '') && ( preg_match($pattern, $cat_list) ) ) {
+			$args['tax_query'] = array(
+									array(
+										'taxonomy' => 'spiffy_categories',
+										'field'    => 'term_id',
+										'operator' => 'IN',
+										'terms'    => explode(',', $cat_list)
+										)
+									);
+		} 
+		// print_r ($args);
 		
-		// Run the query
-		$events = $wpdb->get_results($sql);
-		//print_r($events);
+		// Get the posts
+		$all_events = get_posts($args);	
 		
-		// get the custom fields, if any
-		if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
-			foreach ( $events as $event) {
-				$event->custom_field = $spiffycal_custom_fields->get_custom_fields($event->event_id);
+		// Drop posts that fall outside the date range
+		$events = array ();
+		foreach ( $all_events as $event) {
+			$event->meta = $spiffycal_meta_boxes->get_all_meta($event->ID);
+			if ($event->meta['_spiffy_event_recur'][0] == 'S') {
+				// single event must fall within the range
+				if ($event->meta['_spiffy_event_begin'][0] > $date2 || $event->meta['_spiffy_event_end'][0] < $date1) {
+					continue;
+				}
+			} else {
+				// recurring events that start before the end of the range are included
+				if ($event->meta['_spiffy_event_begin'][0] > $date2) {
+					continue;
+				}
+			}
+			array_push ($events, $event);
+			$event->terms = get_the_terms( $event->ID, 'spiffy_categories' );
+			if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
+				$event->custom_field = $spiffycal_custom_fields->get_custom_fields($event->ID);
 			}
 		}	
+		// print_r($events);
 				
 		return $events;
 	}
@@ -1637,7 +1377,7 @@ ORDER BY event_id";
 	<table class="calendar-heading-tbl">
 		<tr>
 			<td class="calendar-prev">' . $this->prev_month($c_year,$c_month,true) . '</td>
-			<td class="calendar-month">'. date_i18n("F", mktime(null, null, null, $c_month, 1)).' '.$c_year.'</td>
+			<td class="calendar-month">'. date_i18n("F", mktime(0, null, null, $c_month, 1)).' '.$c_year.'</td>
 			<td class="calendar-next">' . $this->next_month($c_year,$c_month,true) . '</td>
 		</tr>
 	</table>
@@ -1707,8 +1447,6 @@ ORDER BY event_id";
 	function minical_draw_grid_events($events, $day_of_week = '') {
 		global $spiffy_calendar;
 		
-		$this->get_all_categories();
-
 		// We need to sort arrays of objects by time
 		usort($events, array($this, 'time_cmp'));
 		
@@ -1722,16 +1460,18 @@ ORDER BY event_id";
 			
 			// Process the events
 			foreach($events as $event) {
-				if ($event->event_all_day == 'T') { 
+				if ( ($event->meta['_spiffy_event_time'][0] == '') && ($event->meta['_spiffy_event_end_time'][0] == '') ) { 
 					$the_time = __('all day', 'spiffy-calendar'); 
-				} else if ($event->event_end_time == '00:00:00') { 
-					$the_time = __('at ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->event_time)); 
+				} else if ($event->meta['_spiffy_event_end_time'][0] == '') { 
+					$the_time = __('at ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_end'][0])); 
+				} else if ($event->meta['_spiffy_event_time'][0] == '') {
+					$the_time = __('until ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_end_time'][0]));
 				} else {
-					$the_time = __('from ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->event_time)); 
-					$the_time .= __(' to ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->event_end_time));
+					$the_time = __('from ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_time'][0])); 
+					$the_time .= __(' to ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_end_time'][0]));
 				} 
-				if ($event->event_link != '') { 
-					$linkurl = esc_url(stripslashes($event->event_link)); 
+				if ($event->meta['_spiffy_event_link'][0] != '') { 
+					$linkurl = esc_url(stripslashes($event->meta['_spiffy_event_link'][0])); 
 					if ($spiffy_calendar->current_options['enable_new_window'] == 'true') {
 						$target = ' target="_blank"';
 					} else {
@@ -1743,31 +1483,30 @@ ORDER BY event_id";
 				$cat_class = '';
 				$cat_name_prefix = '';
 				if ($spiffy_calendar->current_options['enable_categories'] == 'true') {
-					foreach ($this->categories as $cat_details) {
-						if ($cat_details->category_id == $event->event_category) {
-							$cat_css = ' style="color:' . esc_html($cat_details->category_colour) . ';"';
-							$cat_class = ' category_' . $cat_details->category_id;
-							if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
-								$cat_name_prefix = esc_html(stripslashes($cat_details->category_name)) . ' - ';
-							}
-							break;
+					if ( $event->terms ) { 
+						// use the color of the first category
+						$color = get_term_meta($event->terms[0]->term_id, 'color', true);
+						$cat_css = ' style="color:' . esc_html($color) . ';"';
+						$cat_class = ' category_' . $event->terms[0]->term_id;
+						if ($spiffy_calendar->current_options['category_name_display'] == 'true') {
+							$cat_name_prefix = esc_html(stripslashes($event->terms[0]->name)) . ' - ';
 						}
 					}
 				}
 				
-				$output .= '<strong class="'.esc_html($cat_class).'" '.esc_html($cat_css).'>'.$cat_name_prefix.esc_html(stripslashes($event->event_title)).'</strong> '.esc_html($the_time).'<br />';
+				$output .= '<strong class="'.esc_html($cat_class).'" '.$cat_css.'>'.$cat_name_prefix.esc_html(stripslashes($event->post_title)).'</strong> '.esc_html($the_time).'<br />';
 				if ($spiffy_calendar->current_options['enable_expanded_mini_popup'] == 'true') {
-					if ($event->event_image > 0) {
-						$image = wp_get_attachment_image_src( $event->event_image, 'thumbnail');
-						$output .= '<img src="' . $image[0] . '" alt="" />';
+					$image = get_the_post_thumbnail_url ($event->ID, 'thumbnail');
+					if ($image) {
+						$output .= '<img src="' . $image . '" alt="" />';
 					}
-					$output .= $this->format_desc($event->event_desc);
+					$output .= $this->format_desc($event->post_content);
 				}
-				if ($event->event_link != '') {
+				if ($event->meta['_spiffy_event_link'][0] != '') {
 					$output .= '</a>';
 				}
 				if ($spiffy_calendar->current_options['enable_expanded_mini_popup'] == 'true') {
-					$output .= $this->format_location($event->event_location, $event->event_link_location);
+					$output .= $this->format_location($event->meta['_spiffy_event_location'][0], $event->meta['_spiffy_event_link_location'][0]);
 					if ($spiffy_calendar->current_options['link_google_cal'] == 'true') $output .= $this->format_google_link($event);
 				}
 			}
@@ -1782,8 +1521,7 @@ ORDER BY event_id";
 	/*
 	** Configure the "Next Day" link in the calendar
 	*/
-	function next_day($cur_year,$cur_month,$cur_day)
-	{
+	function next_day($cur_year,$cur_month,$cur_day) {
 		list($yy,$mm,$dd) = explode("-", date("Y-m-d", mktime(0,0,0,$cur_month,$cur_day+1,$cur_year)));
 
 		$month = $this->mod_rewrite_months[intval($mm)];
@@ -1797,8 +1535,7 @@ ORDER BY event_id";
 	/*
 	**	Configure the "Next Month" link in the calendar
 	*/
-	function next_month($cur_year,$cur_month,$minical = false, $toggle='grid')
-	{
+	function next_month($cur_year,$cur_month,$minical = false, $toggle='grid') {
 		if ($cur_month == 12) {
 			$the_month = 'jan';
 			$the_year = $cur_year + 1;
@@ -1820,8 +1557,7 @@ ORDER BY event_id";
 	/*
 	** Function to indicate the number of the day passed, eg. 1st or 2nd Sunday
 	*/
-	function np_of_day($date)
-	{
+	function np_of_day($date) {
 		$instance = 0;
 		$dom = date('j',strtotime($date));
 		if (($dom-7) <= 0) { $instance = 1; }
@@ -1835,8 +1571,7 @@ ORDER BY event_id";
 	/*
 	** Configure the "Previous Day" link in the calendar
 	*/
-	function prev_day($cur_year,$cur_month,$cur_day)
-	{
+	function prev_day($cur_year,$cur_month,$cur_day) {
 		list($yy,$mm,$dd) = explode("-", date("Y-m-d", mktime(0,0,0,$cur_month,$cur_day-1,$cur_year)));
 
 		$month = $this->mod_rewrite_months[intval($mm)];
@@ -1850,8 +1585,7 @@ ORDER BY event_id";
 	/*
 	** Configure the "Previous Month" link in the calendar
 	*/
-	function prev_month($cur_year,$cur_month,$minical = false, $toggle = 'grid')
-	{
+	function prev_month($cur_year,$cur_month,$minical = false, $toggle = 'grid') {
 		if ($cur_month == 1) {
 			$the_month = 'dec';
 			$the_year = $cur_year - 1;
@@ -1873,6 +1607,51 @@ ORDER BY event_id";
 	}
 
 	/*
+	** Spiffy event standard single post 
+	*/
+	function single_event_content ( $content ) {
+		global $post, $spiffycal_meta_boxes, $spiffy_calendar, $spiffycal_custom_fields;
+
+		if ( !is_singular() || !in_the_loop() || !is_main_query() ) {
+			return $content;
+		}
+		
+		if ( 'spiffy_event' === $post->post_type ) {
+			$post->meta = $spiffycal_meta_boxes->get_all_meta($post->ID);
+			$post->terms = get_the_terms( $post->ID, 'spiffy_categories' );
+			if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
+				$post->custom_field = $spiffycal_custom_fields->get_custom_fields($post->ID);
+			}
+			$output = '<div class="spiffy">';
+			$output .= '<h3 class="spiffy-column-date">';
+			$output .= $this->format_date ( $post->meta['_spiffy_event_begin'][0], $post->meta['_spiffy_event_end'][0] );
+			$output .= '</h3>';
+
+			$output .= $this->format_recur ( $post->meta['_spiffy_event_recur'][0], $post->meta['_spiffy_event_repeats'][0], $post->meta['_spiffy_event_recur_multiplier'][0] );
+			
+			$output .= $this->draw_event_expanded ($post);
+			
+			$output .= '<p class="spiffy-cats">';
+			if ($post->terms) {
+				$len = count($post->terms);
+				foreach ($post->terms as $index => $term) {
+					$color = get_term_meta($term->term_id, 'color', true);
+					$output .= '<span style="color:' . esc_html($color) . ';">' .esc_html($term->name) . '</span>';
+					if ( ($index < $len ) && ($len > 1)) {
+						$output .= ', ';
+					}
+				}
+			}
+
+			$output .= '</p>';
+			
+			return $output . '</div>';
+		}
+
+		return $content;
+	}
+
+	/*
 	**	Function to compare time in event objects
 	**
 	**  $a < $b  -> -1
@@ -1882,37 +1661,39 @@ ORDER BY event_id";
 	function time_cmp($a, $b) {
 		global $spiffy_calendar;
 		
-		if ($a->event_time == $b->event_time) {
-			if ($a->event_all_day == $b->event_all_day) {
+		$a_all_day = ($a->meta['_spiffy_event_time'][0] == '') && ($a->meta['_spiffy_event_end_time'][0] == '');
+		$b_all_day = ($b->meta['_spiffy_event_time'][0] == '') && ($b->meta['_spiffy_event_end_time'][0] == '');
+		
+		if ($a->meta['_spiffy_event_time'][0] == $b->meta['_spiffy_event_time'][0]) {
+			if ($a_all_day == $b_all_day) {
 				return 0;
-			} else if (($a->event_all_day == 'T') && ($spiffy_calendar->current_options['all_day_last'] == 'false')) {
+			} else if (($a_all_day) && ($spiffy_calendar->current_options['all_day_last'] == 'false')) {
 				return -1;
 			} else {
 				return 1;
 			}
 		}
-		if ($a->event_all_day == 'T') {
+		if ($a_all_day) {
 			if ($spiffy_calendar->current_options['all_day_last'] == 'false') {
 				return -1;
 			} else {
 				return 1;
 			}
 		}
-		if ($b->event_all_day == 'T') {
+		if ($b_all_day) {
 			if ($spiffy_calendar->current_options['all_day_last'] == 'false') {
 				return 1;
 			} else {
 				return -1;
 			}
 		}
-		return ($a->event_time < $b->event_time) ? -1 : 1;
+		return ($a->meta['_spiffy_event_time'][0] < $b->meta['_spiffy_event_time'][0]) ? -1 : 1;
 	}
 
 	/*
 	** Draw today's events
 	*/
-	function todays_events($cat_list = '', $event_limit = '', $style = '', $show_date = 'false', $none_found = '', $title = ' ', $num_columns = '')
-	{
+	function todays_events($cat_list = '', $event_limit = '', $style = '', $show_date = 'false', $none_found = '', $title = ' ', $num_columns = '') {
 		global $wpdb;
 
 		// Sanity check event limit
@@ -1952,8 +1733,7 @@ ORDER BY event_id";
 	/*
 	** Draw upcoming events
 	*/
-	function upcoming_events($cat_list = '', $event_limit = '', $style = '', $none_found = '', $title = ' ', $num_columns = '')
-	{
+	function upcoming_events($cat_list = '', $event_limit = '', $style = '', $none_found = '', $title = ' ', $num_columns = '')	{
 		global $wpdb, $spiffy_calendar;
 
 		// Sanity check event limit
@@ -2005,10 +1785,10 @@ ORDER BY event_id";
 			foreach($events as $event) {
 				if ($style == 'Columns') {
 					// only display the first day for multi day span
-					if (in_array ($event->event_id, $event_id_list) && ($event->begin_timestamp != $this_timestamp) ) {
+					if (in_array ($event->ID, $event_id_list) && ($event->begin_timestamp != $this_timestamp) ) {
 						continue;
 					}
-					$event_id_list[] = $event->event_id;
+					$event_id_list[] = $event->ID;
 				}
 				$output .= '<li class="spiffy-event-details spiffy-'.esc_html($style).' spiffy-num'.esc_html($num_columns).'">'.$this->draw_event($event, $style, $this_timestamp).'</li>';
 				$event_count ++;
@@ -2035,8 +1815,6 @@ ORDER BY event_id";
 	*/
 	function weekly($cat_list = '', $title = '') {
 		global $wpdb, $spiffy_calendar;
-
-		$this->get_all_categories();
 
 		// Build day of week names array
 		$name_days = $this->get_day_names ('full');
@@ -2083,7 +1861,7 @@ ORDER BY event_id";
 			<td class="calendar-prev">' . $this->prev_day($y1,$m1,$d1) . '</td>
 ';
 		$calendar_body .= '
-			<td class="calendar-month">'.date_i18n("F", mktime(null, null, null, $m1, 1)).' '.$y1.'</td>';
+			<td class="calendar-month">'.date_i18n("F", mktime(0, null, null, $m1, 1)).' '.$y1.'</td>';
 		$calendar_body .= '
 			<td class="calendar-next">' . $this->next_day($y2,$m2,$d2) . '</td>
 		</tr>
@@ -2150,7 +1928,7 @@ ORDER BY event_id";
 	<col>
 </colgroup>';
 			$calendar_body .= '
-<tr><td colspan="2" class="cat-key-cell"><strong>'.esc_html($spiffy_calendar->current_options['category_plural']).'</strong></td></tr>';
+<tr><td colspan="2" class="cat-key-cell"><strong>'.esc_html($this->format_category( false )).'</strong></td></tr>';
 			$filtered_cats = explode(',',$cat_list);
 			foreach($this->categories as $cat_detail) {
 				if ( ($cat_list == '') || (in_array($cat_detail->category_id, $filtered_cats))) {
@@ -2163,10 +1941,13 @@ ORDER BY event_id";
 
 		return $calendar_body;
 	}
+	
+	
 } // end of class
 }
 
 if (class_exists("SPIFFYCAL_Views")) {
+	global $spiffy_calendar_views;
 	$spiffy_calendar_views = new SPIFFYCAL_Views();
 }
 

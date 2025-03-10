@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
+<hr>
 <h4><?php _e('Spiffy Calendar', 'spiffy-calendar'); ?>&nbsp;<a href="https://spiffyplugins.ca/spiffycalendar/documentation/">documentation</a></h4>
 <?php if ( !$this->bonus_addons_active() ) { ?>
 <div id="message" class="updated inline" style="margin-top: 35px; margin-left: 0;">

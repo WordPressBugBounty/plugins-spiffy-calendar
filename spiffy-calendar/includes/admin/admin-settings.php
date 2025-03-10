@@ -11,14 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wrap">
 	<h2><?php _e('Spiffy Calendar Settings', 'spiffy-calendar'); ?></h2>
 	<?php // Use GET method on event list, POST on all others
-	$current_tab = isset( $_REQUEST['tab'] ) ? sanitize_text_field($_REQUEST['tab']) : 'events';
+	$current_tab = isset( $_REQUEST['page'] ) ? sanitize_text_field($_REQUEST['page']) : 'settings';
 	?>
 	<form class="spiffy-form" action="" method="POST" enctype='multipart/form-data' >
 		<?php
 			echo '<h2 class="nav-tab-wrapper">';
 				foreach ( $tabs as $tab_key => $tab_caption ) {
 					$active = $current_tab == $tab_key ? 'nav-tab-active' : '';
-					echo '<a class="nav-tab ' . $active . '" href="?page=spiffy-calendar&tab=' . $tab_key . '">' . $tab_caption . '</a>';
+					echo '<a class="nav-tab ' . $active . '" href="edit.php?post_type=spiffy_event&page=' . $tab_key . '">' . $tab_caption . '</a>';
 				}
 			echo '</h2>';
 			

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $spiffycal_custom_fields;
 
-$current_tab = isset( $_REQUEST['tab'] ) ? sanitize_text_field($_REQUEST['tab']) : 'events';
+$current_tab = isset( $_REQUEST['tab'] ) ? sanitize_text_field($_REQUEST['tab']) : 'settings';
 if ($current_tab === 'tickets') {
 	echo "<div class=\"error\"><p>".__('The CampTix plugin has been discontinued. Therefore the CampTix integration is deprecated.','spiffy-calendar')."</p></div>";
 } elseif ( ($current_tab == 'custom_fields') && ( !isset($spiffycal_custom_fields)) ) {

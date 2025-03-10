@@ -23,17 +23,17 @@ class SPIFFYCALBlock {
 		// Needed to run from WP-CLI
 		if (!isset($spiffy_calendar)) {
 			$spiffy_calendar = new stdClass();
-			$spiffy_calendar->current_options = ['alphabetic_categories' => 'true'];
 		}		
 
 		// Get calendar category list
-		$sql = "SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_CATEGORIES_TABLE;
-		if ($spiffy_calendar->current_options['alphabetic_categories'] == 'true') $sql .= " ORDER BY category_name";
-		$cats = $wpdb->get_results($sql);
-		$cats_array = array();
+		$cats = get_terms( array(
+					'taxonomy'   => 'spiffy_categories',
+					'hide_empty' => false,
+				) );
+		$cats_array = array( array( 'value' => '', 'label' => __('All', 'spiffy-calendar')));
 		foreach($cats as $cat) {
-			$cats_array[] = array( 'value' => $cat->category_id,
-									'label' => esc_html(stripslashes($cat->category_name))
+			$cats_array[] = array( 'value' => $cat->term_id,
+									'label' => esc_html(stripslashes($cat->name))
 								);
 			}
 			
@@ -114,6 +114,7 @@ class SPIFFYCALBlock {
 	 * @param array $attributes The attributes that were set on the block.
 	 */
 	public function block_render( $attributes ) {
+		global $spiffy_calendar;
 		// return ("hello");
 		// return print_r ($attributes, true);
 
@@ -166,6 +167,7 @@ class SPIFFYCALBlock {
 }
 
 if (class_exists("SPIFFYCALBlock")) {
+	global $spiffy_calendar_block;
 	$spiffy_calendar_block = new SPIFFYCALBlock();
 }
 

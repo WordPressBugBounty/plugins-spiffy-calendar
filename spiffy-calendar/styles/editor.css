@@ -1,0 +1,29 @@
+/* Editor styles for Spiffy Calendar */
+
+#spiffy_event_meta {
+}
+
+.spiffy-meta-def {
+	padding: 10px 0;
+}
+.spiffy-meta-def label {
+    width: 180px;
+    display: inline-block;
+}
+
+.spiffy-meta-def input {
+	width: auto;
+}
+
+textarea.spiffy-edit-data {
+	vertical-align: top;
+}
+
+.spiffy-form-desc  {
+	margin-left: 180px !important;
+	font-style: italic;
+}
+
+#spiffy-custom-days {
+	margin-left: 180px;
+}

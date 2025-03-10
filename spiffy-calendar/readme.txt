@@ -1,9 +1,9 @@
 === Spiffy Calendar ===
-Contributors: spiffyplugins
+Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
-Tested up to: 6.6
-Stable tag: 4.9.16
+Tested up to: 6.8
+Stable tag: 5.0.0
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -49,7 +49,7 @@ Manage and display your events in a responsive calendar with multiple views, wid
 = Other features: =
 
 * Mouse-over details for each event
-* Normal popup or expanded display of lists
+* Choice of popup, columns or expanded display of lists
 * Events can display their author (optional)
 * Add custom CSS styles or just use the defaults
 * Display upcoming events in your MailPoet newsletters
@@ -90,13 +90,9 @@ Manage and display your events in a responsive calendar with multiple views, wid
 	
 = Easy to use events manager in admin dashboard =
 
-* Comprehensive options panel for admin
-* Event management list with configurable column display, sort by date or category, filter by event status, event search
+* Comprehensive settings panel for admin
 * User groups other than admin can be permitted to manage events
 * Authors can be restricted to editing their own events only
-* Pop up JavaScript calendars help the choosing of dates
-* Events can be links pointing to a location of your choice
-* Events can be marked as draft or pending to remove them from displays
 	
 **BONUS FEATURES AVAILABLE WITH DONATION**
 
@@ -110,29 +106,13 @@ Manage and display your events in a responsive calendar with multiple views, wid
 
 [Learn more about bonus add-ons](https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/)
 	
-== Languages ==
-
-* Dutch (Courtesy Joek Brongers)
-* French (Courtesy Mathieu Gaunet, www.mathieugaunet.com, contact@mathieugaunet.com)
-* German (Courtesy Ingrid Maie)
-* Polish (Courtesy of Krzysztof Kacprzyk)
-* Spanish (Courtesy of Andrew Kurtis, WebHostingHub)
-* Swedish (Courtesy of Kenneth Andersson)
-* Turkish (Courtesy Dr Abdullah Manaz, www.manaz.net)
-
 == Installation ==
 
 1. Install the plugin from the Wordpress repository in the usual way.
 
 2. Activate the plugin on your WordPress plugins page
 
-3. Configure Calendar using the following pages in the admin panel:
-
-   Spiffy Calendar -> Events
-
-   Spiffy Calendar -> Categories
-
-   Spiffy Calendar -> Options
+3. Configure your settings and add some events from the new Events admin panel.
 
 4. Edit or create a page on your blog which includes one of the shortcodes:
 
@@ -148,7 +128,7 @@ Add one of the spiffy widgets to your theme widget areas.
 
 All of the shortcodes and widgets accept a comma separated list of category IDs, such as *cat_list='1,4'*. The category list must be a numeric list of the category number, not the category name.
 
-The list shortcodes and widgets also accept an optional *limit* and *style* selection (Popup or Expanded). Popup is the default, classic style.
+The list shortcodes and widgets also accept an optional *limit* and *style* selection (Popup, Columns or Expanded). Popup is the default classic style.
 
 You can use the spiffy-upcoming-list expanded style shortcode in your MailPoet newsletter, with the following format (including arguments if needed):
 
@@ -165,7 +145,7 @@ The WordPress sitewide setting is used. See "Settings > General > Week starts on
 
 = I updated/added/deleted an event and it is not reflected in my calendar. Why is this? =
 
-If you have a caching plugin, or if your theme has built-in caching, then you need to clear your cache for the areas where the calendar is displayed.
+If you have a caching plugin, or if your theme has built-in caching, then you may need to clear your cache for the areas where the calendar is displayed.
 
 == Screenshots ==
 
@@ -188,6 +168,15 @@ If you have a caching plugin, or if your theme has built-in caching, then you ne
 9. Upcoming events list, expanded view
 
 == Changelog ==
+
+= 5.0.0 (March 10, 2025) =
+
+* MAJOR UPDATE: events are now stored as custom post types. When upgrading from an existing installation, old events will be automatically converted to the new format.
+* After the plugin update you need to update your selected featured event if you use a featured event widget
+* New: events now have standard post features such as quick edit, bulk edit and trashbin
+* New: categories now have standard category features such as multiple categories and quick edit
+* Fix: textdomain translation was being used too soon
+* Update: PHP 8 compatibility
 
 = 4.9.16 (January 5, 2025) =
 

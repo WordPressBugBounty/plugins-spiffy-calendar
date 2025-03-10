@@ -689,3 +689,10 @@ a.spiffy-button:hover {
 .error-message {
 	color: #dc3232; /* same as WP admin error message */
 }
+
+p.spiffy-recurs {
+	font-style: italic;
+}
+p.spiffy-cats {
+	margin-top: 10px;
+}

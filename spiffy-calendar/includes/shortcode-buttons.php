@@ -22,7 +22,16 @@ class SPIFFYCALShortcode {
 	}
 
 	function add_encoder() {
-		global $spiffy_calendar;
+		global $spiffy_calendar, $post, $typenow;
+
+		if ( $typenow == 'post' && ! empty( $_GET['post'] ) ) {
+			$typenow = $post->post_type;
+		} elseif ( empty( $typenow ) && ! empty( $_GET['post'] ) ) {
+	        $post = get_post( sanitize_text_field($_GET['post']) );
+	        $typenow = $post->post_type;
+	    }
+		
+		if ( $typenow == '' || $typenow == "spiffy_event" ) return;		
 		
 		/* Place the form in the footer */
 		add_action('admin_footer', array ($this, 'add_form') );
@@ -70,7 +79,6 @@ class SPIFFYCALShortcode {
 				<option value="spiffy-week"><?php _e( 'Weekly Calendar', 'spiffy-calendar' ); ?></option>
 				<option value="spiffy-todays-list"><?php _e( 'Today\'s Events', 'spiffy-calendar' ); ?></option>
 				<option value="spiffy-upcoming-list"><?php _e( 'Upcoming Events', 'spiffy-calendar' ); ?></option>
-				<!--option value="spiffy-camptix" <?php if (!$spiffy_calendar->bonus_addons_active()) echo 'DISABLED'; ?>><?php _e( 'Ticket Purchase Form', 'spiffy-calendar' ); ?></option-->
 				<option value="spiffy-submit" <?php if (!$spiffy_calendar->bonus_addons_active()) echo 'DISABLED'; ?>><?php _e( 'Front End Submit Form', 'spiffy-calendar' ); ?></option>
 			</select>
 		</div>
@@ -82,10 +90,13 @@ class SPIFFYCALShortcode {
 			</label>
 			<select multiple id="spiffycal_sc_categories">
 			<?php
-			$sql = "SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_CATEGORIES_TABLE;
-			$cats = $wpdb->get_results($sql);
+			$cats = get_terms( array(
+						'taxonomy'   => 'spiffy_categories',
+						'hide_empty' => false,
+					) );
+			echo '<option value="">' . __('All', 'spiffy-calendar') . '</option>';
 			foreach($cats as $cat) {
-				 echo '<option value="'.$cat->category_id.'">' . esc_html(stripslashes($cat->category_name)) . '</option>';
+				echo '<option value="'.$cat->term_id.'">' . esc_html(stripslashes($cat->name)) . '</option>';
 			}
 			?>
 			</select>
@@ -268,6 +279,7 @@ class SPIFFYCALShortcode {
 }
 
 if (class_exists("SPIFFYCALShortcode")) {
+	global $spiffy_calendar_sc;
 	$spiffy_calendar_sc = new SPIFFYCALShortcode();
 }
 

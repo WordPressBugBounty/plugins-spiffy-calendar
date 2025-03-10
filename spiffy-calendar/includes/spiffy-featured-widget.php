@@ -41,7 +41,7 @@ class Spiffy_Featured_Widget extends WP_Widget {
 	 * Display the widget on the screen.
 	 */
 	function widget( $args, $instance ) {
-		global $spiffy_calendar, $spiffy_calendar_views, $wpdb;
+		global $spiffy_calendar, $spiffy_calendar_views, $spiffycal_meta_boxes, $spiffycal_custom_fields;
 		
 		$spiffy_calendar->enqueue_frontend_scripts_and_styles();
 		
@@ -52,18 +52,21 @@ class Spiffy_Featured_Widget extends WP_Widget {
 		$title = empty( $instance['title'] )? '' : apply_filters('widget_title', $instance['title'] );
 		$event_id = empty( $instance['event_id'] )? '' : $instance['event_id'];
 
-		$sql = $wpdb->prepare("SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " WHERE event_id =%d", $event_id);
-		$the_events = $wpdb->get_results($sql);
-		if ( !empty($the_events) ) {
+		$post = get_post ($event_id);
+		if ( $post && ($post->post_type == 'spiffy_event') ) {
+			$post->meta = $spiffycal_meta_boxes->get_all_meta($event_id);
+			$post->terms = get_the_terms( $event_id, 'spiffy_categories' );
+			if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
+				$post->custom_field = $spiffycal_custom_fields->get_custom_fields($event_id);
+			}
 			echo $before_widget;
 			echo '<div class="spiffy-list-Expanded">';
 			echo $before_title . $title . $after_title;
 			echo '<ul><li class="spiffy-event-details spiffy-Expanded">';
-			if ($the_events[0]->event_recur == 'S') {
-				echo '<span class="spiffy-upcoming-date">' . 
-						date_i18n(get_option('date_format'), strtotime($the_events[0]->event_begin)) . '</span>';
-			}
-			echo $spiffy_calendar_views->draw_event_expanded ($the_events[0]);
+			echo '<span class="spiffy-upcoming-date">';
+			echo $spiffy_calendar_views->format_date ( $post->meta['_spiffy_event_begin'][0], $post->meta['_spiffy_event_end'][0] );
+			echo '</span>';
+			echo $spiffy_calendar_views->draw_event_expanded ($post);
 			echo '</li></ul></div>';
 			echo $after_widget;
 		}
@@ -103,12 +106,16 @@ class Spiffy_Featured_Widget extends WP_Widget {
 				if ($instance['event_id'] == '') {
 					echo '<option value="">' . __( 'Select an event', 'spiffy-calendar') . '</option>';
 				}
-				$sql = "SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_TABLE . " ORDER BY event_id ASC";
-				$events = $wpdb->get_results($sql);
+				$events = get_posts( array (
+							'numberposts' => -1,
+							'post_type' => 'spiffy_event',
+							'orderby' => 'title',
+							'order' => 'ASC'
+				));
 				foreach ( $events as $event ) {
 					echo '<option ';
-					if ($instance['event_id'] == $event->event_id) echo 'selected="selected" ';
-					echo 'value="'.$event->event_id.'">' . esc_html(stripslashes($event->event_title)) . '</option>';
+					if ($instance['event_id'] == $event->ID) echo 'selected="selected" ';
+					echo 'value="'.$event->ID.'">' . esc_html(stripslashes($event->post_title)) . '</option>';
 				} 
 				?>
 			</select>		

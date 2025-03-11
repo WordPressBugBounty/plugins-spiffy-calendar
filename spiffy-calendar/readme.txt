@@ -3,7 +3,7 @@ Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.0.0
+Stable tag: 5.0.1
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -169,10 +169,15 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 
 == Changelog ==
 
+= 5.0.1 (March 11, 2025) =
+
+* Fix: add check to prevent post conversion more than one time
+* New: display category ID in the category admin panel
+
 = 5.0.0 (March 10, 2025) =
 
 * MAJOR UPDATE: events are now stored as custom post types. When upgrading from an existing installation, old events will be automatically converted to the new format.
-* After the plugin update you need to update your selected featured event if you use a featured event widget
+* After the plugin update you need to update your selected featured event if you use a featured event widget. You also need to update the category ID if you filter any widgets or shortcodes by category.
 * New: events now have standard post features such as quick edit, bulk edit and trashbin
 * New: categories now have standard category features such as multiple categories and quick edit
 * Fix: textdomain translation was being used too soon

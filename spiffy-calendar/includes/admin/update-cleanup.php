@@ -223,6 +223,10 @@ class SPIFFYCAL_update_cleanup {
 	function db_convert_to_posts () {
 		global $wpdb, $spiffy_calendar, $spiffycal_custom_fields;
 
+		// Quit if posts already exist
+		$posts = get_posts ( array ( 'post_type' => 'spiffy_event' ) );
+		if ( $posts) return;
+		
 		// Create categories
 		$sql = "SELECT * FROM " . $wpdb->get_blog_prefix().WP_SPIFFYCAL_CATEGORIES_TABLE;
 		$cats = $wpdb->get_results($sql);

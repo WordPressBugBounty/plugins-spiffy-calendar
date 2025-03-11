@@ -681,6 +681,7 @@ class SPIFFYCAL_customposts {
 	function taxonomy_columns( $columns ) {
 		unset ($columns['description']);
 		$columns['color'] = __( 'Color', 'spiffy-calendar' );
+		$columns['cat_id'] = __( 'ID', 'spiffy-calendar' );
 		return $columns;
 	}
 
@@ -688,6 +689,9 @@ class SPIFFYCAL_customposts {
 		if ( 'color' === $column_name ) {
 			$meta = esc_html (get_term_meta($term_id, 'color', true));
 			return ( '<div style="background-color:'.$meta.';width:1em;">&nbsp;</div>' ); 
+		}
+		if ( 'cat_id' === $column_name ) {
+			return ( $term_id ); 
 		}
 	}
 

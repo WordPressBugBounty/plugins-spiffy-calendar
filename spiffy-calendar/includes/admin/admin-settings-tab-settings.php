@@ -164,6 +164,15 @@ if (!current_user_can('manage_options'))
 
 <tr>
 	<th scope="row">
+		<?php _e('Exclude events from search','spiffy-calendar'); ?>
+	</th>
+	<td>
+		<input type="checkbox" name="exclude_from_search" <?php if ( $this->current_options['exclude_from_search'] == 'true') echo 'checked'; ?>>
+	</td>
+</tr>
+
+<tr>
+	<th scope="row">
 		<?php _e('More details link text','spiffy-calendar'); ?>
 	</th>
 	<td>

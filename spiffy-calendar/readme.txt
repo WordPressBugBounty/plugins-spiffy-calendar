@@ -3,7 +3,7 @@ Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.0.1
+Stable tag: 5.0.3
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -169,9 +169,16 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 
 == Changelog ==
 
+= 5.0.3 (March 12, 2025) =
+
+* New: option to exclude events from the global search
+* New: restore the Spiffy shortcuts in the admin bar
+* New: add CSS rule to hide featured image on Spiffy Event post display since it is output as part of the event
+* Fix: handle another case where a standard WordPress role has been removed from an installation
+
 = 5.0.2 (March 12, 2025) =
 
-* Fix: handle the case where a WordPress role has been removed from an installation
+* Fix: handle the case where a standard WordPress role has been removed from an installation
 
 = 5.0.1 (March 11, 2025) =
 

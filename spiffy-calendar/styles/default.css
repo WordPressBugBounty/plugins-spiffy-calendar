@@ -696,3 +696,7 @@ p.spiffy-recurs {
 p.spiffy-cats {
 	margin-top: 10px;
 }
+
+.single-spiffy_event .attachment-post-thumbnail, .single-spiffy_event .wp-block-post-featured-image {
+	display: none;
+}

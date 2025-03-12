@@ -3,7 +3,7 @@
 Plugin Name: Spiffy Calendar
 Plugin URI:  http://www.spiffyplugins.ca/spiffycalendar
 Description: A full featured, simple to use Spiffy Calendar plugin for WordPress that allows you to manage and display your events and appointments.
-Version:     5.0.2
+Version:     5.0.3
 Author:      Spiffy Plugins
 Author URI:  http://spiffyplugins.ca
 License:     GPL2
@@ -73,6 +73,7 @@ Class Spiffy_Calendar
 		// Admin stuff
 		add_action('init', array($this, 'calendar_init_action'));
 		add_action('admin_menu', array($this, 'admin_menu'), 10);
+		add_action('admin_bar_menu', array($this, 'admin_toolbar'), 999 );
 
 		add_filter('spiffycal_settings_tabs_array', array($this, 'settings_tabs_array_default'), 9);
 
@@ -200,6 +201,7 @@ Class Spiffy_Calendar
 						'category_filter' => false,
 						'category_key_above' => false,
 						'mini_popup' => 'right',
+						'exclude_from_search' => false,
 						'title_label' => ''
 					);
 		$saved_options = get_option($this->spiffy_options);
@@ -335,6 +337,46 @@ Class Spiffy_Calendar
 		return $value;
 	}
 	
+	/*
+	** Add the menu shortcuts to the admin toolbar
+	*/
+	function admin_toolbar ($wp_admin_bar) {
+
+		// Check user permissions
+		$allowed_group = $this->current_options['can_manage_events'];
+		
+		if (!current_user_can($allowed_group)) return;
+		
+		$cat_name = ($this->current_options['category_plural'] == '') ? __('Categories', 'spiffy-calendar') : esc_html($this->current_options['category_plural']);
+		
+		// Our own Spiffy node
+		$wp_admin_bar->add_node( array(
+			'id'    => 'spiffy_main_node',
+			'title' => __('Spiffy Calendar', 'spiffy-calendar'),
+			'href'  => admin_url('edit.php?post_type=spiffy_event') 
+			) );
+		$wp_admin_bar->add_node( array(
+			'id'    => 'spiffy_edit_events_node',
+			'title' => __('Manage Events', 'spiffy-calendar'),
+			'parent' => 'spiffy_main_node',
+			'href'  => admin_url('edit.php?post_type=spiffy_event')
+			) );
+		$wp_admin_bar->add_node( array(
+			'id'    => 'spiffy_add_event_node',
+			'title' => __('Add Event', 'spiffy-calendar'),
+			'parent' => 'spiffy_main_node',
+			'href'  => admin_url('post-new.php?post_type=spiffy_event') 
+			) );
+		if (current_user_can('manage_options')) {
+			$wp_admin_bar->add_node( array(
+				'id'    => 'spiffy_categories_node',
+				'title' => $cat_name,
+				'parent' => 'spiffy_main_node',
+				'href'  => admin_url('edit-tags.php?taxonomy=spiffy_categories&post_type=spiffy_event')
+				) );
+		}
+	}
+
 	/*
 	** Add the default tabs to the settings tab array
 	*/
@@ -685,7 +727,7 @@ Class Spiffy_Calendar
 		}
 		
 		$this->current_options['mini_popup'] = sanitize_text_field($_POST['mini_popup']);
-		
+
 		$this->current_options['responsive_width'] = abs((int)$_POST['responsive_width']);
 
 		if (isset($_POST['category_bg_color'])) {
@@ -702,6 +744,12 @@ Class Spiffy_Calendar
 
 		$this->current_options['category_text_color'] = sanitize_text_field($_POST['category_text_color']);
 		
+		if (isset($_POST['exclude_from_search'])) {
+			$this->current_options['exclude_from_search'] = true;
+		} else {
+			$this->current_options['exclude_from_search'] = false;
+		}
+			
 		// Check to see if we are removing custom styles
 		if (isset($_POST['reset_styles'])) {
 			if ($_POST['reset_styles'] == 'on') {

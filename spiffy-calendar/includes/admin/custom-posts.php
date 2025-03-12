@@ -64,6 +64,7 @@ class SPIFFYCAL_customposts {
 		add_action( 'admin_footer', array( $this,'quickedit_category_javascript' ) );
 		
 		add_action( 'admin_action_spiffy_copy_event', array( $this, 'copy_event' ) );
+		add_action( 'pre_get_posts', array ( $this, 'remove_post_type_from_search_results') );
 	}
 	
 	/*
@@ -195,6 +196,7 @@ class SPIFFYCAL_customposts {
 	** Add spiffy capabilities to the given role
 	*/
 	function add_caps ($role, $limit) {
+		if ($role == null) return;
 		foreach ( $this->allowed_capabilities as $cap ) {
 			$role->add_cap( $cap );
 		}
@@ -497,6 +499,34 @@ class SPIFFYCAL_customposts {
 			$hidden[] = 'date';     
 		}   
 		return $hidden;
+	}
+
+	/*
+	** Remove events from search results if configured
+	*/
+	function remove_post_type_from_search_results( $query ) {
+		global $spiffy_calendar;
+		
+		if ( !$spiffy_calendar->current_options['exclude_from_search'] ) return;
+		
+		/* check is front end main loop content */
+		if(is_admin() || !$query->is_main_query()) return;
+
+		/* check is search result query */
+		if($query->is_search()){
+
+			$post_type_to_remove = 'spiffy_event';
+			/* get all searchable post types */
+			$searchable_post_types = get_post_types(array('exclude_from_search' => false));
+
+			/* make sure you got the proper results, and that your post type is in the results */
+			if(is_array($searchable_post_types) && in_array($post_type_to_remove, $searchable_post_types)){
+				/* remove the post type from the array */
+				unset( $searchable_post_types[ $post_type_to_remove ] );
+				/* set the query to the remaining searchable post types */
+				$query->set('post_type', $searchable_post_types);
+			}
+		}
 	}
 
 	/*

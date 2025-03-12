@@ -229,6 +229,7 @@ class SPIFFYCAL_customposts {
 	** Remove spiffy capabilities from the given role
 	*/
 	function remove_caps ($role) {
+		if ($role == null) return;
 		foreach ( $this->allowed_capabilities as $cap ) {
 			$role->remove_cap( $cap );
 		}

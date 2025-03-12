@@ -169,6 +169,10 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 
 == Changelog ==
 
+= 5.0.2 (March 12, 2025) =
+
+* Fix: handle the case where a WordPress role has been removed from an installation
+
 = 5.0.1 (March 11, 2025) =
 
 * Fix: add check to prevent post conversion more than one time

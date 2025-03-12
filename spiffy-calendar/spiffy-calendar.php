@@ -3,7 +3,7 @@
 Plugin Name: Spiffy Calendar
 Plugin URI:  http://www.spiffyplugins.ca/spiffycalendar
 Description: A full featured, simple to use Spiffy Calendar plugin for WordPress that allows you to manage and display your events and appointments.
-Version:     5.0.1
+Version:     5.0.2
 Author:      Spiffy Plugins
 Author URI:  http://spiffyplugins.ca
 License:     GPL2

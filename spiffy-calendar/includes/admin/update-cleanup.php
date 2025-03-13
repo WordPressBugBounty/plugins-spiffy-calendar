@@ -270,7 +270,10 @@ class SPIFFYCAL_update_cleanup {
 			// All day converted to blanks
 			if ($event->event_all_day == 'T') {
 				$event->event_time = '';
-				$event->event_end_time = '';
+				if ($event->event_end_time == "00:00:00") $event->event_end_time = '';
+			} else {
+				if ($event->event_time == "00:00:00") $event->event_time = '';
+				if ($event->event_end_time == "00:00:00") $event->event_end_time = '';
 			}
 			
 			// always get the custom fields, if any, and convert to new field names

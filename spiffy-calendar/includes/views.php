@@ -1922,21 +1922,7 @@ else {
 		$calendar_body .= '</table>';
 
 		if ($spiffy_calendar->current_options['enable_categories'] == 'true') {
-			$calendar_body .= '<table class="spiffy cat-key">';
-			$calendar_body .= '<colgroup>
-	<col style="width:10px; height:10px;">
-	<col>
-</colgroup>';
-			$calendar_body .= '
-<tr><td colspan="2" class="cat-key-cell"><strong>'.esc_html($this->format_category( false )).'</strong></td></tr>';
-			$filtered_cats = explode(',',$cat_list);
-			foreach($this->categories as $cat_detail) {
-				if ( ($cat_list == '') || (in_array($cat_detail->category_id, $filtered_cats))) {
-					$calendar_body .= '<tr><td style="background-color:' . esc_html($cat_detail->category_colour) . '; " class="cat-key-cell"></td>
-<td class="cat-key-cell">&nbsp;'.$cat_detail->category_name.'</td></tr>';
-				}
-			}
-			$calendar_body .= '</table>';
+			$calendar_body .= $this->category_key ($cat_list);
 		}
 
 		return $calendar_body;

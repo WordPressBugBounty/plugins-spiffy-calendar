@@ -3,7 +3,7 @@ Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.0.3
+Stable tag: 5.0.4
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -168,6 +168,15 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 9. Upcoming events list, expanded view
 
 == Changelog ==
+
+**Before updating from version 4 to version 5 it is strongly recommended to remove old events**
+
+= 5.0.4 (March 13, 2025) =
+
+* Fix: incorrect conversion of blank times to new posts
+* Fix: category key on weekly calendar
+* Tweak: add missing Settings shortcut to admin bar
+* Fix: fix publish status if importing old events from CSV
 
 = 5.0.3 (March 12, 2025) =
 

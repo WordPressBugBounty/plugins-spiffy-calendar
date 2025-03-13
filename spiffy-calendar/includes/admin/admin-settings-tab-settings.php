@@ -173,6 +173,16 @@ if (!current_user_can('manage_options'))
 
 <tr>
 	<th scope="row">
+		<?php _e('Event query limit','spiffy-calendar'); ?>
+	</th>
+	<td>
+		<input type="text" name="max_event_query" value="<?php echo esc_html($this->current_options['max_event_query']); ?>" size="3" maxlength="3" />
+		<span class="description"><?php _e('Limit calendar output to using this number of the most recently published events.', 'spiffy-calendar'); ?></span>
+	</td>
+</tr>
+
+<tr>
+	<th scope="row">
 		<?php _e('More details link text','spiffy-calendar'); ?>
 	</th>
 	<td>

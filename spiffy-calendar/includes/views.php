@@ -1300,7 +1300,9 @@ else {
 		// Get all posts, with category filter if specified
 		$args = array(
 					'post_type' => 'spiffy_event',
-					'numberposts' => -1,
+					'numberposts' => $spiffy_calendar->current_options['max_event_query'],		// limit to latest events to avoid reading 1000s of old events
+					'orderby' => 'date',
+					'order' => 'DESC',
 					'post_status' => 'publish',
 					);
 

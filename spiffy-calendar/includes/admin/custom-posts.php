@@ -632,9 +632,9 @@ class SPIFFYCAL_customposts {
 	** Set the default sort order for events to sort by event begin time descending
 	*/
 	function my_sort_custom_column_query( $query ) {
-		if( ! is_admin() )
+		if( !is_admin() || ( 'spiffy_event' != $query->get( 'post_type' ) ))
 			return;
-
+			 
 		$orderby = $query->get( 'orderby' );
 
 		if ( ('_spiffy_event_begin' == $orderby) || (!isset( $_GET['orderby'])) ) {

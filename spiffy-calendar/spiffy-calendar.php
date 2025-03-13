@@ -3,7 +3,7 @@
 Plugin Name: Spiffy Calendar
 Plugin URI:  http://www.spiffyplugins.ca/spiffycalendar
 Description: A full featured, simple to use Spiffy Calendar plugin for WordPress that allows you to manage and display your events and appointments.
-Version:     5.0.4
+Version:     5.0.5
 Author:      Spiffy Plugins
 Author URI:  http://spiffyplugins.ca
 License:     GPL2
@@ -202,6 +202,7 @@ Class Spiffy_Calendar
 						'category_key_above' => false,
 						'mini_popup' => 'right',
 						'exclude_from_search' => false,
+						'max_event_query' => 500,
 						'title_label' => ''
 					);
 		$saved_options = get_option($this->spiffy_options);
@@ -764,6 +765,8 @@ Class Spiffy_Calendar
 			$this->current_options['exclude_from_search'] = false;
 		}
 			
+		$this->current_options['max_event_query'] = (int) (sanitize_text_field($_POST['max_event_query']) );
+
 		// Check to see if we are removing custom styles
 		if (isset($_POST['reset_styles'])) {
 			if ($_POST['reset_styles'] == 'on') {

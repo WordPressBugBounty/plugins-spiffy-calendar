@@ -3,7 +3,7 @@ Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.0.4
+Stable tag: 5.0.5
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -170,6 +170,11 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 == Changelog ==
 
 **Before updating from version 4 to version 5 it is strongly recommended to remove old events**
+
+= 5.0.5 (March 13, 2025) = 
+
+* New: setting for event limit, default is 500. This will limit calendar output to using the 500 most recent events to exclude the case of 1000s of old events
+* Fix: post ordering on other post types 
 
 = 5.0.4 (March 13, 2025) =
 

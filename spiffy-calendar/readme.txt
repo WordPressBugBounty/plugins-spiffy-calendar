@@ -3,7 +3,7 @@ Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.8
-Stable tag: 5.0.5
+Stable tag: 5.0.6
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -170,6 +170,11 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 == Changelog ==
 
 **Before updating from version 4 to version 5 it is strongly recommended to remove old events**
+
+= 5.0.6 (May 17, 2025) = 
+
+* Fix: mini calendar display for events with a start time but no end time
+* Tweak: CSV import/export display when bonus add-ons not present
 
 = 5.0.5 (March 13, 2025) = 
 

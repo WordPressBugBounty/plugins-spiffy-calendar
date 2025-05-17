@@ -1465,7 +1465,7 @@ else {
 				if ( ($event->meta['_spiffy_event_time'][0] == '') && ($event->meta['_spiffy_event_end_time'][0] == '') ) { 
 					$the_time = __('all day', 'spiffy-calendar'); 
 				} else if ($event->meta['_spiffy_event_end_time'][0] == '') { 
-					$the_time = __('at ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_end'][0])); 
+					$the_time = __('at ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_time'][0])); 
 				} else if ($event->meta['_spiffy_event_time'][0] == '') {
 					$the_time = __('until ', 'spiffy-calendar') . date(get_option('time_format'), strtotime($event->meta['_spiffy_event_end_time'][0]));
 				} else {

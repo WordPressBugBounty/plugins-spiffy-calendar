@@ -298,36 +298,29 @@ class SPIFFYCAL_customposts {
 	function events_admin_buttons($views){
 		global $post_type_object, $spiffy_calendar;
 
-		if ( !$spiffy_calendar->bonus_addons_active() ) {
-			$disabled = 'disabled="disabled"';
-		} else {
-			$disabled = '';
-		}
-		
 		ob_start();
+		if ( !$spiffy_calendar->bonus_addons_active() ) {
+			echo __( 'Export CSV','spiffy-calendar' ) . ' | ' . __('Import CSV','spiffy-calendar');
+			echo " <small><em>* ";
+			echo __ ('CSV import/export is a bonus feature', 'spiffy-calendar');
+			echo "</em></small>";
+		} else {
 		?>
-		<a href='<?php echo esc_url($_SERVER['REQUEST_URI']); ?>&spiffy_csv_export=true&nonce=<?php echo wp_create_nonce( 'spiffy_export_nonce' ); ?>' <?php echo $disabled; ?> >
+		<a href='<?php echo esc_url($_SERVER['REQUEST_URI']); ?>&spiffy_csv_export=true&nonce=<?php echo wp_create_nonce( 'spiffy_export_nonce' ); ?>'>
 			<?php _e( 'Export CSV','spiffy-calendar' ); ?>
-		</a> | <a href="#" onclick='jQuery("#div_import").css("display", "inline"); return false;' <?php echo $disabled; ?> >
+		</a> | <a href="#" onclick='jQuery("#div_import").css("display", "inline"); return false;'>
 			<?php _e('Import CSV','spiffy-calendar'); ?>
 		</a>
 		<form id='div_import' class="spiffy-form" name='div_import' style="display: none; margin-left: 5px;" action="" method="POST" enctype='multipart/form-data'>
-			<input type="file" name="spiffy_csv" multiple="false" <?php echo $disabled; ?> />
-			<input type="submit" <?php echo $disabled; ?> value="<?php _e ( 'Import','spiffy-calendar'); ?>" name="import_events" id="import_events" class="button-primary spiffy-submit action" />
+			<input type="file" name="spiffy_csv" multiple="false" />
+			<input type="submit" value="<?php _e ( 'Import','spiffy-calendar'); ?>" name="import_events" id="import_events" class="button-primary spiffy-submit action" />
 			<input type="hidden" value="true" name="save_spiffycal">
 			<?php _e('Import events from CSV', 'spiffy-calendar'); ?>
 			<?php 	if ( function_exists('wp_nonce_field') ) wp_nonce_field('update_spiffycal_options', 'update_spiffycal_options_nonce'); ?>
 		</form>
 
 		<?php	  
-		if ( !$spiffy_calendar->bonus_addons_active() ) {
-			echo " <small><em>* ";
-			_e ('CSV import/export is a bonus feature', 'spiffy-calendar');
-			echo "</em></small>";
 		}
-		?>
-
-		<?php
 		$views['csv'] = ob_get_clean( );
 
 		return $views;

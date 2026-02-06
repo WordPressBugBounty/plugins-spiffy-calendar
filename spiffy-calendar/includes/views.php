@@ -572,8 +572,8 @@ class SPIFFYCAL_Views {
 			$details .= '<span class="event-content-break"></span>';
 		}
 		
-		$details .= $this->format_desc($event->post_content);
 		if ($event->meta['_spiffy_event_link'][0] != '') $details .= '</a>';
+		$details .= $this->format_desc($event->post_content);
 		$details .= $this->format_location($event->meta['_spiffy_event_location'][0], $linkmap);
 		if ( $spiffy_calendar->bonus_addons_active() && isset ($spiffycal_custom_fields) ) {
 			$details .= $spiffycal_custom_fields->view($event);
@@ -1497,15 +1497,15 @@ else {
 				}
 				
 				$output .= '<strong class="'.esc_html($cat_class).'" '.$cat_css.'>'.$cat_name_prefix.esc_html(stripslashes($event->post_title)).'</strong> '.esc_html($the_time).'<br />';
+				if ($event->meta['_spiffy_event_link'][0] != '') {
+					$output .= '</a>';
+				}
 				if ($spiffy_calendar->current_options['enable_expanded_mini_popup'] == 'true') {
 					$image = get_the_post_thumbnail_url ($event->ID, 'thumbnail');
 					if ($image) {
 						$output .= '<img src="' . $image . '" alt="" />';
 					}
 					$output .= $this->format_desc($event->post_content);
-				}
-				if ($event->meta['_spiffy_event_link'][0] != '') {
-					$output .= '</a>';
 				}
 				if ($spiffy_calendar->current_options['enable_expanded_mini_popup'] == 'true') {
 					$output .= $this->format_location($event->meta['_spiffy_event_location'][0], $event->meta['_spiffy_event_link_location'][0]);

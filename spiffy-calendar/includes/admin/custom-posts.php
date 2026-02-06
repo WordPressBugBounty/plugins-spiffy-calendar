@@ -379,7 +379,7 @@ class SPIFFYCAL_customposts {
 					),
 					'admin.php'
 				),
-				basename(__FILE__),
+				basename(__FILE__).$post->ID,
 			);
 
 			$actions[ 'copy' ] = '<a href="' . esc_url( $url ) . '" title="' . __('Copy','spiffy-calendar') . '">' . __('Copy','spiffy-calendar') . '</a>';
@@ -397,10 +397,13 @@ class SPIFFYCAL_customposts {
 			wp_die( __('Bad copy request', 'spiffy-calendar') );
 		}
 
-		// Nonce verification
-		check_admin_referer( basename( __FILE__ ) );
+		// Get the original post ID 
+		$post_id = absint( $_GET[ 'post' ] );
 
-		// Get the original post ID and data
+		// Nonce verification
+		check_admin_referer( basename( __FILE__ ).$post_id );
+
+		// Get the original post data
 		$post_id = absint( $_GET[ 'post' ] );
 		$post = get_post( $post_id );
 

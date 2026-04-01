@@ -171,6 +171,10 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 
 **Before updating from version 4 to version 5 it is strongly recommended to remove old events**
 
+= 5.0.9 (April 1, 2025) = 
+
+* Fix: add filter to prevent code insertion in title field for events. 
+
 = 5.0.8 (December 11, 2025) =
 
 * Fix: add event id to nonce for event copy

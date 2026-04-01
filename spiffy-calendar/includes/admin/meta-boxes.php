@@ -17,6 +17,19 @@ class SPIFFYCAL_metaboxes {
 		add_action ( 'init' , array ($this, 'meta_boxes_define') );
 		add_action( 'add_meta_boxes', array($this, 'meta_boxes_init')); 
 		add_action( 'save_post', array($this, 'meta_boxes_save'), 10, 3 );		
+
+
+		add_filter( 'wp_insert_post_data', array($this, 'filter_post_title'), 10, 3);
+	}
+
+	/*
+	** Sanitize post title
+	*/
+	function filter_post_title( $data, $postarr, $unsanitized_postarr){
+		if ( isset( $data['post_type'] ) && 'spiffy_event' === $data['post_type'] ) {
+			$data['post_title'] = sanitize_text_field( wp_strip_all_tags ($data['post_title']) );
+		}
+		return $data;
 	}
 	
 	/*
@@ -383,6 +396,12 @@ class SPIFFYCAL_metaboxes {
 		// Check if nonce is valid.
 		if ( ! wp_verify_nonce( $nonce_name, $nonce_action ) ) {
             return;
+		}
+
+		if ( isset( $_POST['post_type'] ) && 'spiffy_event' === $_POST['post_type'] && isset( $_POST['post_title'] ) ) {
+			// Sanitize Title
+			$_POST['post_title'] = sanitize_text_field( wp_strip_all_tags ($_POST['post_title'] ) );
+			$_POST['post_title'] = 'hello';
 		}
 
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {

@@ -3,7 +3,7 @@ Contributors: spiffyplugins,bevsupport
 Donate Link:  https://spiffyplugins.ca/spiffycalendar/bonus-add-ons/
 Requires at least: 5.3
 Tested up to: 6.9
-Stable tag: 5.0.8
+Stable tag: 5.0.11
 License: GPLv2
 Tags:  calendar,event,responsive,recurring,block
 
@@ -170,6 +170,12 @@ If you have a caching plugin, or if your theme has built-in caching, then you ma
 == Changelog ==
 
 **Before updating from version 4 to version 5 it is strongly recommended to remove old events**
+*Version 5 is a MAJOR UPDATE: events are now stored as custom post types. When upgrading from an existing installation, old events will be automatically converted to the new format.*
+
+= 5.0.11 (April 17, 2026) =
+= 5.0.10 (April 17, 2026) =
+
+* Fix: previous revision messed up front end submit titles
 
 = 5.0.9 (April 1, 2025) = 
 
